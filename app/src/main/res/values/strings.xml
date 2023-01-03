@@ -4,4 +4,6 @@
     <string name="title_manage">Manage</string>
     <string name="title_chat">Chat</string>
     <string name="title_profile">Profile</string>
+
+    <string name="api_key">7gz5qpby68c5</string>
 </resources>
