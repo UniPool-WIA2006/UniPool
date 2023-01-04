@@ -3,14 +3,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="?android:windowBackground">
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Create Request"
+        android:layout_marginBottom="15dp"
         android:textSize="25sp"
         android:textStyle="bold"  />
 
@@ -19,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:hint="Pickup Location"
         app:startIconDrawable="@drawable/ic_baseline_emoji_people_24"
@@ -60,7 +62,7 @@
         android:hint="Fees"
         app:startIconDrawable="@drawable/ic_baseline_price_check_24"
         app:endIconDrawable="@drawable/ic_baseline_check_circle_24"
-        app:endIconMode="custom">>
+        app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -70,7 +72,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="25dp"
         android:background="#4B000000" />
 
@@ -99,12 +101,13 @@
         android:background="#4B000000" />
 
     <Button
+        android:id="@+id/submitRequestBtn"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#1F6CCA"
-        android:layout_margin="40dp"
-        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:text="Submit"
         android:textSize="25sp" />
 

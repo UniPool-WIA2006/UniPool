@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ViewOffers#newInstance} factory method to
+ * Use the {@link ViewOffersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewOffers extends Fragment {
+public class ViewOffersFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +23,7 @@ public class ViewOffers extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ViewOffers() {
+    public ViewOffersFragment() {
         // Required empty public constructor
     }
 
@@ -36,8 +36,8 @@ public class ViewOffers extends Fragment {
      * @return A new instance of fragment ViewOffers.
      */
     // TODO: Rename and change types and number of parameters
-    public static ViewOffers newInstance(String param1, String param2) {
-        ViewOffers fragment = new ViewOffers();
+    public static ViewOffersFragment newInstance(String param1, String param2) {
+        ViewOffersFragment fragment = new ViewOffersFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

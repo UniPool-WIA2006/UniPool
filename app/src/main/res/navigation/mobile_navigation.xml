@@ -27,4 +27,13 @@
         android:name="com.example.unipool.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/viewOffers"
+        android:name="com.example.unipool.ViewOffersFragment"
+        android:label="fragment_view_offers"
+        tools:layout="@layout/fragment_view_offers" />
+    <fragment
+        android:id="@+id/createRequest"
+        android:name="com.example.unipool.CreateRequestFragment"
+        android:label="CreateRequest" />
 </navigation>
