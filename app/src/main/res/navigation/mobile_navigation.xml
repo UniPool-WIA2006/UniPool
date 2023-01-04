@@ -9,8 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.unipool.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_manage"
@@ -22,28 +21,19 @@
         android:id="@+id/navigation_chat"
         android:name="com.example.unipool.ui.chat.ChatFragment"
         android:label="@string/title_chat"
-        tools:layout="@layout/fragment_chat" >
-        <action
-            android:id="@+id/action_navigation_chat_to_userFragment"
-            app:destination="@id/userFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.unipool.ui.profile.profile_page_1"
+        android:name="com.example.unipool.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile_page_1" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/userFragment"
-        android:name="com.example.unipool.ui.chat.UserFragment"
-        android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
-        <action
-            android:id="@+id/action_userFragment_to_navigation_chat"
-            app:destination="@id/navigation_chat" />
-    </fragment>
+        android:id="@+id/viewOffers"
+        android:name="com.example.unipool.ViewOffersFragment"
+        android:label="fragment_view_offers"
+        tools:layout="@layout/fragment_view_offers" />
     <fragment
-        android:id="@+id/profile_page_2"
-        android:name="com.example.unipool.ui.profile.profile_page_2"
-        android:label="fragment_profile_page_2"
-        tools:layout="@layout/fragment_profile_page_2" />
+        android:id="@+id/createRequest"
+        android:name="com.example.unipool.CreateRequestFragment"
+        android:label="CreateRequest" />
 </navigation>
