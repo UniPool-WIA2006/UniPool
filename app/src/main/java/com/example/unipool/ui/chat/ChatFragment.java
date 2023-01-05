@@ -25,8 +25,8 @@ import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListVi
 public class ChatFragment extends Fragment {
 
     private FragmentChatBinding binding;
-    private ChatClient client = ChatClient.instance();
-    private User user = new User();
+    private final ChatClient client = ChatClient.instance();
+    private final User user = new User();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class ChatFragment extends Fragment {
             if(result.isSuccess()) {
                 Log.d( "ChatFragment", "Success Connecting");
             } else {
-                Log.d( "ChatFragment", result.error().getMessage().toString());
+                Log.d( "ChatFragment", result.error().getMessage());
             }
         });
     }
