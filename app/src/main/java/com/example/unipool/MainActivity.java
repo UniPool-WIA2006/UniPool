@@ -19,8 +19,6 @@ import io.getstream.chat.android.offline.plugin.configuration.Config;
 import io.getstream.chat.android.offline.model.message.attachments.UploadAttachmentsNetworkType;
 import io.getstream.chat.android.offline.plugin.factory.StreamOfflinePluginFactory;
 
-import com.example.unipool.ui.login.*;
-
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -28,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -48,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
         Config config = new Config(true, true, true, UploadAttachmentsNetworkType.NOT_ROAMING);
         StreamOfflinePluginFactory offlinePluginFactory = new StreamOfflinePluginFactory(config, this);
         ChatClient client = new ChatClient.Builder(getString(R.string.api_key), this).logLevel(ChatLogLevel.ALL).withPlugin(offlinePluginFactory).build();
-
-        //app crashes when adding login
-        Intent intent =new Intent(MainActivity.this, login_1.class);
-        startActivity(intent);
 
 //        // Authenticate and connect the user
 //        // TO_DO connect to login
