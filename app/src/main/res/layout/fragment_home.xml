@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/demoFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -40,7 +41,7 @@
         android:layout_gravity="center"
         android:backgroundTint="#1F6CCA"
         android:padding="20dp"
-        android:text="Create Request"
+        android:text="MY REQUEST"
         android:textSize="25sp" />
 
     <View
@@ -55,7 +56,7 @@
         android:layout_gravity="center"
         android:backgroundTint="#209E43"
         android:padding="20dp"
-        android:text="View Offer"
+        android:text="MY OFFER"
         android:textSize="25sp" />
 
 

@@ -13,19 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.unipool.databinding.FragmentCreateRequestBinding;
+import com.example.unipool.databinding.FragmentEditOfferDetailsBinding;
 import com.example.unipool.databinding.FragmentHomeBinding;
 import com.example.unipool.ui.home.HomeViewModel;
 
 
-public class createRequest extends Fragment {
+public class editOfferDetails extends Fragment {
 
-    private FragmentCreateRequestBinding binding;
+    private FragmentEditOfferDetailsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentCreateRequestBinding.inflate(getLayoutInflater());
+        binding = FragmentEditOfferDetailsBinding.inflate(getLayoutInflater());
         return binding.getRoot();
 
     }
@@ -34,14 +34,20 @@ public class createRequest extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button createRequestBtn = binding.submitRequestBtn;
+        Button saveEditOfferBtn = binding.saveEditOfferBtn;
 
-        createRequestBtn.setOnClickListener(new View.OnClickListener() {
+        saveEditOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_createRequest_to_navigation_home);
+                Navigation.findNavController(view).navigate(R.id.action_editOfferDetails_to_navigation_home);
             }
         });
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
