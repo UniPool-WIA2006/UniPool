@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.unipool.DatabaseHandler;
 import com.example.unipool.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -34,7 +35,7 @@ public class change_password extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_change_password);
+        setContentView(R.layout.activity_change_password);
 
         final Pattern PASSWORD_PATTERN =
                 Pattern.compile(
