@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.register_as_a_driver">
+
+    <TextView
+        android:id="@+id/TV_LicenseExpiry"
+        android:layout_width="217dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="476dp"
+        android:layout_marginEnd="124dp"
+        android:text="Driving License Expiry"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ET_LicenseExpiry"
+        android:layout_width="251dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="492dp"
+        android:layout_marginEnd="92dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_PlateNumber"
+        android:layout_width="112dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="228dp"
+        android:text="Plate Number"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ET_PlateNumber"
+        android:layout_width="251dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="92dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_VehicleColour"
+        android:layout_width="130dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="212dp"
+        android:text="Vehicle Colour"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ET_VehicleColour"
+        android:layout_width="251dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="92dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ET_CarModel"
+        android:layout_width="251dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="92dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_CarModel"
+        android:layout_width="85dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="256dp"
+        android:text="Car Model"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_backRegAsDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/btn_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TVtitle_driver_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="10dp"
+        android:text="Register As a Driver"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Btn_Update_Car"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="68dp"
+        android:background="#3D5A80"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

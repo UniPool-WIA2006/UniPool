@@ -110,7 +110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //Update specific row of user profile.
-    public void UpdateUserProfile(String originalUsername, String username, String user_bio, String gender, String user_contact,
+    public void UpdateUserProfile(String username, String user_bio, String gender, String user_contact,
                                   String user_email, String user_emer_cont_name, String user_emer_cont_num) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -122,7 +122,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EMERGENCY_CONT_NAME, user_emer_cont_name);
         values.put(EMERGENCY_CONT_NUM, user_emer_cont_num);
         //db.update(TABLE_NAME1, values, "name=?", new String[]{originalUsername});
-        db.update(TABLE_NAME1, values, PREV_USERNAME + " = " + originalUsername, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
         db.close();
     }
 

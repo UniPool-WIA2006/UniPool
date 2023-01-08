@@ -15,12 +15,29 @@
         android:theme="@style/Theme.UniPool"
         tools:targetApi="31">
         <activity
-            android:name=".ui.chat.ChannelActivity"
+            android:name=".ui.profile.update_car_info"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".ui.profile.edit_profile"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.profile.change_password"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
         <activity
             android:name=".MyApplication"
             android:exported="true">
