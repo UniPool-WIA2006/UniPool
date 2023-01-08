@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         StreamOfflinePluginFactory offlinePluginFactory = new StreamOfflinePluginFactory(config, this);
         ChatClient client = new ChatClient.Builder(getString(R.string.api_key), this).logLevel(ChatLogLevel.ALL).withPlugin(offlinePluginFactory).build();
 
+        //app crashes when adding login
+//        Intent intent =new Intent(MainActivity.this, MainActivity2.class);
+//        startActivity(intent);
+
 //        // Authenticate and connect the user
 //        // TO_DO connect to login
 //        User user = new User();

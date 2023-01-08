@@ -13,6 +13,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // creating a constant variables for our database.
     // below variable is for our database name.
+    // creating a constant variables for our database.
+    // below variable is for our database name.
     private static final String DB_NAME = "Profile.db";
 
     // below int is our database version
@@ -20,38 +22,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // below variable is for our table name.
     private static final String TABLE_NAME1 = "UserProfile";
-    private static final String TABLE_NAME2 = "Password";
-    private static final String TABLE_NAME3 = "Status";
-    private static final String TABLE_NAME4 = "CarInfo";
-    private static final String TABLE_NAME5 = "Users";
-
-    //Primary key for all tables.
-    private static final String ID_COL = "user_id";
 
     //Column name for TABLE 1 "UserProfile"
-    private static final String USERNAME = "name";
+    private static final String PREV_USERNAME = "prev_name";
+    private static final String USERNAME = "name"; //PK
     private static final String BIO = "bio";
     private static final String GENDER = "gender";
     private static final String CONTACT_NO = "contact_no";
     private static final String EMAIL = "email";
     private static final String EMERGENCY_CONT_NAME = "emer_cont_name";
     private static final String EMERGENCY_CONT_NUM = "emer_cont_num";
-
-    //Column name for TABLE 2 "Password"
     private static final String PASSWORD = "password"; //current password
-
-    //Column name for TABLE 3 "Status"
     private static final String STATUS = "driver_status";
-
-    //Column name for TABLE 4 "CarInfo"
     private static final String CAR_MODEL = "car_model";
-    private static final String VEC_COLOR = "vehicle_color";
+    private static final String VEH_COLOR = "vehicle_color";
     private static final String PLATE = "plate_number";
     private static final String LICENSE_EXP = "license_expiry";
-
-    //Column name for TABLE 5 "Users" for login purposes
-    //USERNAME
-    //PASSWORD
+    private static final String TRUST_POINT = "trust_point";
 
     // creating a constructor for our database handler.
     public DatabaseHandler(Context context) {
@@ -66,46 +53,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // setting our column names
         // along with their data types.
         String query1 = "CREATE TABLE " + TABLE_NAME1 + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + USERNAME + " TEXT,"
+                + PREV_USERNAME + " TEXT,"
+                + USERNAME + " TEXT PRIMARY KEY,"
                 + BIO + " TEXT,"
                 + GENDER + " TEXT,"
                 + CONTACT_NO + " TEXT,"
                 + EMAIL + " TEXT,"
                 + EMERGENCY_CONT_NAME + " TEXT,"
-                + EMERGENCY_CONT_NUM + " TEXT)";
-
-        String query2 = "CREATE TABLE " + TABLE_NAME2 + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + PASSWORD + " TEXT)";
-
-        String query3 = "CREATE TABLE " + TABLE_NAME3 + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + STATUS + " TEXT)";
-
-        String query4 = "CREATE TABLE " + TABLE_NAME4 + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + EMERGENCY_CONT_NUM + " TEXT,"
+                + PASSWORD + " TEXT,"
+                + STATUS + " TEXT,"
                 + CAR_MODEL + " TEXT,"
-                + VEC_COLOR + " TEXT,"
+                + VEH_COLOR + " TEXT,"
                 + PLATE + " TEXT,"
-                + LICENSE_EXP + " TEXT)";
-
-        String query5 = "CREATE TABLE " + TABLE_NAME5 + " ("
-                + USERNAME + " TEXT,"
-                + PASSWORD + " TEXT)";
+                + LICENSE_EXP + " TEXT,"
+                + TRUST_POINT + " INT)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
         db.execSQL(query1);
-        db.execSQL(query2);
-        db.execSQL(query3);
-        db.execSQL(query4);
-        db.execSQL(query5);
     }
 
     // this method is use to update user profile information to our sqlite database.
-    public void AddUserProfile(int user_id, String username, String user_bio, String user_gender, String user_contact,
-                               String user_email, String user_emer_cont_name, String user_emer_cont_num) {
+    public void AddUserProfile(String prev_name, String username, String user_bio, String user_gender, String user_contact,
+                               String user_email, String user_emer_cont_name, String user_emer_cont_num, String password, String status,
+                               String car_model, String veh_color, String plate_no, String license_exp, int trust_point) {
 
         // on below line we are creating a variable for our sqlite database and calling writable method
         // as we are writing data in our database.
@@ -115,7 +87,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         // on below line we are passing all values along with its key and value pair.
-        values.put(ID_COL, user_id);
+        values.put(PREV_USERNAME, prev_name);
         values.put(USERNAME, username);
         values.put(BIO, user_bio);
         values.put(GENDER, user_gender);
@@ -123,108 +95,98 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EMAIL, user_email);
         values.put(EMERGENCY_CONT_NAME, user_emer_cont_name);
         values.put(EMERGENCY_CONT_NUM, user_emer_cont_num);
+        values.put(PASSWORD, password);
+        values.put(STATUS, status);
+        values.put(CAR_MODEL, car_model);
+        values.put(VEH_COLOR, veh_color);
+        values.put(PLATE, plate_no);
+        values.put(LICENSE_EXP, license_exp);
+        values.put(TRUST_POINT, trust_point);
 
         // after adding all values we are passing content values to our table.
         db.insert(TABLE_NAME1, null, values);
         // at last we are closing our database after adding database.
         db.close();
     }
+
     //Update specific row of user profile.
-    public void UpdateUserProfile(int user_id, String username, String user_bio, String user_gender, String user_contact,
-                                  String user_email, String user_emer_cont_name, String user_emer_cont_num){
+    public void UpdateUserProfile(String originalUsername, String username, String user_bio, String gender, String user_contact,
+                                  String user_email, String user_emer_cont_name, String user_emer_cont_num) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(USERNAME, username);
         values.put(BIO, user_bio);
-        values.put(GENDER, user_gender);
+        values.put(GENDER, gender);
         values.put(CONTACT_NO, user_contact);
         values.put(EMAIL, user_email);
         values.put(EMERGENCY_CONT_NAME, user_emer_cont_name);
         values.put(EMERGENCY_CONT_NUM, user_emer_cont_num);
-        db.update(TABLE_NAME1, values, ID_COL + " = " + user_id, null);
+        //db.update(TABLE_NAME1, values, "name=?", new String[]{originalUsername});
+        db.update(TABLE_NAME1, values, PREV_USERNAME + " = " + originalUsername, null);
         db.close();
     }
 
-    //first-time assign password for a user.
-    public void AddPassword(int user_id, String password){
+    public void UpdatePassword(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ID_COL, user_id);
-        values.put(PASSWORD, password);
-        db.insert(TABLE_NAME2, null, values);
-        db.close();
+        values.put(PASSWORD,password);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
     }
 
-    //update specific row on password
-    public void UpdatePassword(int user_id, String password){
+    public void UpdateGender(String username, String gender){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(PASSWORD, password);
-        db.update(TABLE_NAME2, values, ID_COL + " = " + user_id, null);
+        values.put(GENDER, gender);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
     }
 
-    //assign status for user.
-    public void AssignStatus(int user_id, String status){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(ID_COL, user_id);
-        values.put(STATUS, status);
-        db.insert(TABLE_NAME3, null, values);
-        db.close();
-    }
-
-    //change status for a specific user.
-    public void UpdateStatus(int user_id, String status){
+    public void UpdateStatus(String username, String status){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(STATUS, status);
-        db.update(TABLE_NAME3, values, ID_COL + " = " + user_id, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
     }
 
-    //insert a new row.
-    public void AddCarInfo(int user_id,String car_model, String vec_color, String plate_no, String license_exp){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(ID_COL, user_id);
-        values.put(CAR_MODEL, car_model);
-        values.put(VEC_COLOR, vec_color);
-        values.put(PLATE, plate_no);
-        values.put(LICENSE_EXP, license_exp);
-        db.insert(TABLE_NAME4, null, values);
-        db.close();
-    }
-
-    //update specific row of car info.
-    public void UpdateCarInfo(int user_id, String car_model, String vec_color, String plate_no, String license_exp){
+    public void UpdateCarInfo(String username, String car_model, String veh_color, String plate_no, String license_exp){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(CAR_MODEL, car_model);
-        values.put(VEC_COLOR, vec_color);
+        values.put(VEH_COLOR, veh_color);
         values.put(PLATE, plate_no);
         values.put(LICENSE_EXP, license_exp);
-        db.update(TABLE_NAME4, values, ID_COL + " = " + user_id, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+    }
+
+    public void UpdateTrustPoint(String username, int trust_point){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TRUST_POINT, trust_point);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+    }
+
+
+    public void UpdateOriginalUsername(String username, String original_username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PREV_USERNAME, original_username);
+        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME3);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME4);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME5);
         onCreate(db);
     }
 
     //retrieve all user info.
-    public ArrayList<String> searchUserInfo(int user_id){
+    public ArrayList<String> searchUserInfo(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE user_id = " + user_id, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE name='" + username + "'", null);
         ArrayList<String> arr = new ArrayList<>();
-
-        if(cursor.moveToFirst()){
-            do{
-                arr.add(cursor.getString(0));
+        if (cursor.moveToFirst()) {
+            do {
+                arr.add(cursor.getString(0)); //prev_username
                 arr.add(cursor.getString(1)); //username
                 arr.add(cursor.getString(2)); //bio
                 arr.add(cursor.getString(3)); //gender
@@ -232,50 +194,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 arr.add(cursor.getString(5)); //email
                 arr.add(cursor.getString(6)); //emergency_contact_name
                 arr.add(cursor.getString(7)); //emergency_contact_no
-            }while(cursor.moveToNext());
+                arr.add(cursor.getString(8)); //password
+                arr.add(cursor.getString(9)); //status (driver/ not a driver)
+                arr.add(cursor.getString(10)); //car_model
+                arr.add(cursor.getString(11)); //vehicle_color
+                arr.add(cursor.getString(12)); //plate_number
+                arr.add(cursor.getString(13)); //license_expiry_date
+                arr.add(cursor.getString(14)); //trust_point
+                arr.add(cursor.getString(15)); //online_status
+            } while (cursor.moveToNext());
         }
         cursor.close();
         return arr;
     }
 
-    //retrieve user current password.
-    public ArrayList<String> searchUserPassword(int user_id){
+    public String getOnlineUsername(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT password FROM " + TABLE_NAME2 + " WHERE user_id = " + user_id, null);
-        ArrayList<String> arr = new ArrayList<>();
-
-        if(cursor.moveToFirst()){
-            do{
-                arr.add(cursor.getString(0)); //password
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-        return arr;
-    }
-
-    //retrieve user's status (Driver/Not a Driver)
-    public ArrayList<String> searchUserStatus(int user_id){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT driver_status FROM " + TABLE_NAME3 + " WHERE user_id = " + user_id, null);
-        ArrayList<String> arr = new ArrayList<>();
-
-        if(cursor.moveToFirst()){
-            do{
-                arr.add(cursor.getString(0)); //password
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-        return arr;
+        Cursor cursor = db.rawQuery("SELECT name FROM " + TABLE_NAME1 + " WHERE online_status = 'Online' " , null);
+        return cursor.getString(0);
     }
 
 
     //For user registration and login
-    public Boolean insertData(String username, String password){
+    public Boolean insertData(String username, String password, String email, String contact){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put(USERNAME, username);
         contentValues.put(PASSWORD, password);
-        long result = MyDB.insert(TABLE_NAME5, null, contentValues);
+        contentValues.put(EMAIL, email);
+        contentValues.put(CONTACT_NO, contact);
+//        contentValues.put(BIO, "temp");
+//        contentValues.put(GENDER, "temp");
+//        contentValues.put(EMERGENCY_CONT_NAME, "temp");
+//        contentValues.put(EMERGENCY_CONT_NUM, "temp");
+        long result = MyDB.insert(TABLE_NAME1, null, contentValues);
         if(result==-1)
             return false;
         else
@@ -284,7 +236,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Boolean checkusername(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from " + TABLE_NAME5 + " where " + USERNAME + " = ?", new String[]{username});
+        Cursor cursor = MyDB.rawQuery("Select * from " + TABLE_NAME1 + " where " + USERNAME + " = ?", new String[]{username});
         if (cursor.getCount() > 0)
             return true;
         else
@@ -293,7 +245,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Boolean checkusernamepassword(String username, String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from " + TABLE_NAME5 + " where " + USERNAME + " = ? and " + PASSWORD + " = ?", new String[] {username,password});
+        Cursor cursor = MyDB.rawQuery("Select * from " + TABLE_NAME1 + " where " + USERNAME + " = ? and " + PASSWORD + " = ?", new String[] {username,password});
         if(cursor.getCount()>0)
             return true;
         else
