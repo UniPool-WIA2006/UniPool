@@ -55,7 +55,7 @@ public class register_as_a_driver extends AppCompatActivity {
                 dbHandler.UpdateStatus(username, "Driver");
                 dbHandler.UpdateCarInfo(username,car_model,vec_color,plate_no,license_exp);
                 Toast.makeText(register_as_a_driver.this, "Successfully registered as a driver!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(register_as_a_driver.this, profile_page_2.class);
+                Intent intent = new Intent(register_as_a_driver.this, profilePage2.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
             }
