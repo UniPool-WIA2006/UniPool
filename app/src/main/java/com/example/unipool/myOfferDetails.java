@@ -13,19 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.unipool.databinding.FragmentCreateRequestBinding;
 import com.example.unipool.databinding.FragmentHomeBinding;
+import com.example.unipool.databinding.FragmentMyOfferDetailsBinding;
 import com.example.unipool.ui.home.HomeViewModel;
 
 
-public class createRequest extends Fragment {
+public class myOfferDetails extends Fragment {
 
-    private FragmentCreateRequestBinding binding;
+    private FragmentMyOfferDetailsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentCreateRequestBinding.inflate(getLayoutInflater());
+        binding = FragmentMyOfferDetailsBinding.inflate(getLayoutInflater());
         return binding.getRoot();
 
     }
@@ -34,14 +34,27 @@ public class createRequest extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button createRequestBtn = binding.submitRequestBtn;
+        Button editOfferBtn = binding.editOfferBtn;
+        Button deleteOfferBtn = binding.deleteOfferBtn;
 
-        createRequestBtn.setOnClickListener(new View.OnClickListener() {
+        editOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_createRequest_to_navigation_home);
+                Navigation.findNavController(view).navigate(R.id.action_myOfferDetails_to_editOfferDetails);
             }
         });
 
+        deleteOfferBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.);
+            }
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Create Request"
+        android:text="Offer Ride"
         android:layout_marginBottom="15dp"
         android:textSize="25sp"
         android:textStyle="bold"  />
@@ -81,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:hint="Notes for driver"
+        android:hint="Notes for passenger"
         app:helperText="* Optional"
         app:startIconDrawable="@drawable/ic_baseline_create_24"
         app:endIconDrawable="@drawable/ic_baseline_check_circle_24"
@@ -108,7 +108,8 @@
         android:backgroundTint="#1F6CCA"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:text="Submit"
+        android:text="Create"
         android:textSize="25sp" />
+
 
 </LinearLayout>

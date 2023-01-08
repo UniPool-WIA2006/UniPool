@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -9,13 +9,30 @@
         android:id="@+id/navigation_home"
         android:name="com.example.unipool.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_myRequest"
+            app:destination="@id/myRequest" />
+        <action
+            android:id="@+id/action_navigation_home_to_myOffer"
+            app:destination="@id/myOffer" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_manage"
         android:name="com.example.unipool.ui.manage.ManageFragment"
-        android:label="@string/title_manage"
-        tools:layout="@layout/fragment_manage" />
+        android:label="Carpool Offer"
+        tools:layout="@layout/fragment_manage" >
+        <action
+            android:id="@+id/action_navigation_manage_to_manageCarpoolRequest"
+            app:destination="@id/manageCarpoolRequest" />
+        <action
+            android:id="@+id/action_navigation_manage_to_carpoolOffer2"
+            app:destination="@id/carpoolOffer2" />
+        <action
+            android:id="@+id/action_navigation_manage_to_carpoolOffer1"
+            app:destination="@id/carpoolOffer1" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_chat"
@@ -28,12 +45,105 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/viewOffers"
-        android:name="com.example.unipool.ViewOffersFragment"
-        android:label="fragment_view_offers"
-        tools:layout="@layout/fragment_view_offers" />
+        android:id="@+id/myRequest"
+        android:name="com.example.unipool.myRequest"
+        android:label="My Request" >
+        <action
+            android:id="@+id/action_myRequest_to_myRequestDetails"
+            app:destination="@id/myRequestDetails" />
+        <action
+            android:id="@+id/action_myRequest_to_createRequest"
+            app:destination="@id/createRequest" />
+    </fragment>
+    <fragment
+        android:id="@+id/myRequestDetails"
+        android:name="com.example.unipool.myRequestDetails"
+        android:label="Request Details" >
+        <action
+            android:id="@+id/action_myRequestDetails_to_editRequestDetails"
+            app:destination="@id/editRequestDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/editRequestDetails"
+        android:name="com.example.unipool.editRequestDetails"
+        android:label="Edit Request" >
+        <action
+            android:id="@+id/action_editRequestDetails_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/createRequest"
-        android:name="com.example.unipool.CreateRequestFragment"
-        android:label="CreateRequest" />
+        android:name="com.example.unipool.createRequest"
+        android:label="Create Request" >
+        <action
+            android:id="@+id/action_createRequest_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/myOffer"
+        android:name="com.example.unipool.myOffer"
+        android:label="My Offer" >
+
+        <action
+            android:id="@+id/action_myOffer_to_myOfferDetails"
+            app:destination="@id/myOfferDetails" />
+        <action
+            android:id="@+id/action_myOffer_to_createOffer"
+            app:destination="@id/createOffer" />
+    </fragment>
+    <fragment
+        android:id="@+id/createOffer"
+        android:name="com.example.unipool.createOffer"
+        android:label="Create Offer" >
+        <action
+            android:id="@+id/action_createOffer_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/myOfferDetails"
+        android:name="com.example.unipool.myOfferDetails"
+        android:label="Offer Details" >
+        <action
+            android:id="@+id/action_myOfferDetails_to_editOfferDetails"
+            app:destination="@id/editOfferDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/editOfferDetails"
+        android:name="com.example.unipool.editOfferDetails"
+        android:label="Edit Offer" >
+        <action
+            android:id="@+id/action_editOfferDetails_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageCarpoolRequest"
+        android:name="com.example.unipool.manageCarpoolRequest"
+        android:label="Carpool Request" >
+        <action
+            android:id="@+id/action_manageCarpoolRequest_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
+        <action
+            android:id="@+id/action_manageCarpoolRequest_to_carpoolRequest1"
+            app:destination="@id/carpoolRequest1" />
+        <action
+            android:id="@+id/action_manageCarpoolRequest_to_carpoolRequest2"
+            app:destination="@id/carpoolRequest2" />
+    </fragment>
+    <fragment
+        android:id="@+id/carpoolOffer1"
+        android:name="com.example.unipool.carpoolOffer1"
+        android:label="Carpool Offer"
+        tools:layout="@layout/fragment_carpool_offer2" />
+    <fragment
+        android:id="@+id/carpoolOffer2"
+        android:name="com.example.unipool.carpoolOffer2"
+        android:label="Carpool Offer" />
+    <fragment
+        android:id="@+id/carpoolRequest1"
+        android:name="com.example.unipool.carpoolRequest1"
+        android:label="Carpool Request" />
+    <fragment
+        android:id="@+id/carpoolRequest2"
+        android:name="com.example.unipool.ui.profile.carpoolRequest2"
+        android:label="Carpool Request" />
 </navigation>

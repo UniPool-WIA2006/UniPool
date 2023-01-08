@@ -5,17 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
-import com.example.unipool.CreateRequestFragment;
 import com.example.unipool.R;
-import com.example.unipool.ViewOffersFragment;
 import com.example.unipool.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -34,17 +32,20 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.createRequestBtn.setOnClickListener(new View.OnClickListener() {
+        Button createRequestBtn = binding.createRequestBtn;
+        Button viewOffersBtn = binding.viewOffersBtn;
+
+        createRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openCreateRequest();
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_myRequest);
             }
         });
 
-        binding.viewOffersBtn.setOnClickListener(new View.OnClickListener() {
+        viewOffersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openViewOffers();
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_myOffer);
             }
         });
     }
@@ -55,9 +56,5 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    public void openCreateRequest() {
-        Intent intent = new Intent(this,cr);
-
-    }
 
 }
