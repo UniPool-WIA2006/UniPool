@@ -15,6 +15,20 @@
         android:theme="@style/Theme.UniPool"
         tools:targetApi="31">
         <activity
+            android:name=".ui.profile.feedback_driver"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.profile.feedback_passenger"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.profile.update_car_info"
             android:exported="false">
             <meta-data
