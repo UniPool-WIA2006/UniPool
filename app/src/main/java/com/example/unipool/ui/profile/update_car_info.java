@@ -38,7 +38,7 @@ public class update_car_info extends AppCompatActivity {
         btn_backUpdateCI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(update_car_info.this, profile_page_2.class);
+                Intent intent = new Intent(update_car_info.this, profile_page_1.class);
                 finish();
             }
         });
@@ -54,9 +54,10 @@ public class update_car_info extends AppCompatActivity {
                 String license_exp = ET_License_Exp.getText().toString();
                 dbHandler.UpdateCarInfo(username,car_model,vec_color,plate_no,license_exp);
                 Toast.makeText(update_car_info.this, "Car info is successfully updated!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(update_car_info.this, profile_page_2.class);
-                intent.putExtra("username", username);
-                startActivity(intent);
+//                Intent intent = new Intent(update_car_info.this, profile_page_2.class);
+//                intent.putExtra("username", username);
+//                startActivity(intent);
+                finish();
             }
         });
     }
