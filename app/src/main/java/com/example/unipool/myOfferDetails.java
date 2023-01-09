@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -20,7 +21,46 @@ import com.example.unipool.ui.home.HomeViewModel;
 
 public class myOfferDetails extends Fragment {
 
+    private SharedViewModel sharedViewModel;
+
     private FragmentMyOfferDetailsBinding binding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        Observer<String> locationObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerDetailsLocation.setText(str);
+            }
+        };
+        sharedViewModel.getOfferLocation().observe(this, locationObserver);
+
+        Observer<String> destinationObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerDetailsDestination.setText(str);
+            }
+        };
+        sharedViewModel.getOfferDestination().observe(this, destinationObserver);
+
+        Observer<String> feesObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerDetailsFees.setText(str);
+            }
+        };
+        sharedViewModel.getOfferFees().observe(this, feesObserver);
+
+        Observer<String> extraNotesObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerDetailsExtraNotes.setText(str);
+            }
+        };
+        sharedViewModel.getOfferExtraNotes().observe(this, extraNotesObserver);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -35,7 +75,6 @@ public class myOfferDetails extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button editOfferBtn = binding.editOfferBtn;
-        Button deleteOfferBtn = binding.deleteOfferBtn;
 
         editOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +83,6 @@ public class myOfferDetails extends Fragment {
             }
         });
 
-        deleteOfferBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.);
-            }
-        });
     }
 
     @Override
