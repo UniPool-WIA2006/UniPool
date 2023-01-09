@@ -70,7 +70,7 @@ public class myOffer extends Fragment {
         super.onCreate(savedInstanceState);
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-        //      delete purpose
+//      delete purpose
         Observer<String> offerDeleteObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
@@ -79,7 +79,7 @@ public class myOffer extends Fragment {
         };
         sharedViewModel.getOfferDelete().observe(this, offerDeleteObserver);
 
-
+//      edit purpose
         Observer<String> offerLocationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
@@ -102,7 +102,7 @@ public class myOffer extends Fragment {
                 binding.offerFees.setText(str);
             }
         };
-        sharedViewModel.getOfferDestination().observe(this, offerFeesObserver);
+        sharedViewModel.getOfferFees().observe(this, offerFeesObserver);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

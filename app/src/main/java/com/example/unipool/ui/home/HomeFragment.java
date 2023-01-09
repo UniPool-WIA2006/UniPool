@@ -14,13 +14,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.unipool.R;
+import com.example.unipool.SharedViewModel;
 import com.example.unipool.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
+    private SharedViewModel sharedViewModel;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
