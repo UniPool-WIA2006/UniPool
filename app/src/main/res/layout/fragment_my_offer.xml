@@ -100,7 +100,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="10dp"
-                            android:scaleType="fitEnd"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/ic_baseline_emoji_people_24" />
 
                         <TextView
@@ -123,7 +123,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="10dp"
-                            android:scaleType="fitEnd"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/ic_baseline_add_location_24"/>
 
                         <TextView

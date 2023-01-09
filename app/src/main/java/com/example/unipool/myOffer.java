@@ -38,6 +38,14 @@ public class myOffer extends Fragment {
         };
         sharedViewModel.getOfferDelete().observe(this, offerDeleteObserver);
 
+        Observer<String> offerDeleteObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.cardViewOffer2.setVisibility(View.GONE);
+            }
+        };
+        sharedViewModel.getOfferDelete1().observe(this, offerDeleteObserver1);
+
 //      create purpose
         Observer<String> offerCreateObserver = new Observer<String>() {
             @Override
@@ -152,6 +160,7 @@ public class myOffer extends Fragment {
         CardView cardViewOffer1 = binding.cardViewOffer1;
         Button createOfferBtn = binding.createNewOfferBtn;
         Button deleteOfferBtn = binding.deleteOfferBtn;
+        Button deleteOfferBtn1 = binding.deleteOfferBtn1;
 
         cardViewOffer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,6 +177,14 @@ public class myOffer extends Fragment {
             }
         });
 
+        deleteOfferBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedViewModel.setOfferDelete("delete");
+                binding.cardViewOffer2.setVisibility(View.GONE);
+            }
+        });
+
         createOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,7 +192,6 @@ public class myOffer extends Fragment {
                 binding.cardViewOffer2.setVisibility(View.VISIBLE);
             }
         });
-
     }
 
     @Override
