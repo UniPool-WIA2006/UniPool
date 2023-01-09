@@ -1,29 +1,22 @@
 package com.example.unipool;
 
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.unipool.databinding.FragmentMyRequestBinding;
-import com.example.unipool.databinding.FragmentMyRequestDetailsBinding;
 import com.example.unipool.ui.home.HomeViewModel;
-
 
 public class myRequest extends Fragment {
 
@@ -45,13 +38,13 @@ public class myRequest extends Fragment {
         sharedViewModel.getRequestDelete().observe(this, requestDeleteObserver);
 
 //      create purpose
-//        Observer<String> requestCreateObserver = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.cardViewRequest2.setVisibility(View.VISIBLE);
-//            }
-//        };
-//        sharedViewModel.getRequestCreate().observe(this, requestCreateObserver);
+        Observer<String> requestCreateObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.cardViewRequest2.setVisibility(View.VISIBLE);
+            }
+        };
+        sharedViewModel.getRequestCreate().observe(this, requestCreateObserver);
 
 //        Observer<String> requestLocationObserver1 = new Observer<String>() {
 //            @Override
@@ -197,14 +190,6 @@ public class myRequest extends Fragment {
             }
         });
 
-        createNewRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_createRequest);
-            }
-        });
-        super.onViewCreated(view, savedInstanceState);
-
         deleteRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -212,6 +197,16 @@ public class myRequest extends Fragment {
                 binding.cardViewRequest1.setVisibility(View.GONE);
             }
         });
+
+        createNewRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_createRequest);
+                binding.cardViewRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+        super.onViewCreated(view, savedInstanceState);
+
 
     }
 

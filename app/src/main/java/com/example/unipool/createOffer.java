@@ -20,11 +20,18 @@ import com.example.unipool.ui.home.HomeViewModel;
 
 public class createOffer extends Fragment {
 
-
+    private SharedViewModel sharedViewModel;
     private FragmentCreateOfferBinding binding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
 
         binding = FragmentCreateOfferBinding.inflate(getLayoutInflater());
         return binding.getRoot();
@@ -40,6 +47,11 @@ public class createOffer extends Fragment {
         submitOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                sharedViewModel.setOfferLocation1(binding.createOfferLocationSave.getText().toString());
+//                sharedViewModel.setOfferDestination1(binding.createOfferDestinationSave.getText().toString());
+//                sharedViewModel.setOfferFees1(binding.createOfferFeesSave.getText().toString());
+//                sharedViewModel.setOfferExtraNotes1(binding.createOfferExtraNotesSave.getText().toString());
+                sharedViewModel.setOfferCreate("visible");
                 Navigation.findNavController(view).navigate(R.id.action_createOffer_to_navigation_home);
             }
         });

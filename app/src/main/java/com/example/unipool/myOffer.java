@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.unipool.databinding.FragmentHomeBinding;
 import com.example.unipool.databinding.FragmentMyOfferBinding;
 import com.example.unipool.ui.home.HomeViewModel;
 
@@ -30,7 +29,7 @@ public class myOffer extends Fragment {
         super.onResume();
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-//      delete purpose
+///      delete purpose
         Observer<String> offerDeleteObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
@@ -38,6 +37,40 @@ public class myOffer extends Fragment {
             }
         };
         sharedViewModel.getOfferDelete().observe(this, offerDeleteObserver);
+
+//      create purpose
+        Observer<String> offerCreateObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.cardViewOffer2.setVisibility(View.VISIBLE);
+            }
+        };
+        sharedViewModel.getOfferCreate().observe(this, offerCreateObserver);
+
+//        Observer<String> offerLocationObserver1 = new Observer<String>() {
+//            @Override
+//            public void onChanged(String str) {
+//                binding.offerLocation1.setText(str);
+//            }
+//        };
+//        sharedViewModel.getOfferLocation1().observe(this, offerLocationObserver1);
+//
+//        Observer<String> offerDestinationObserver1 = new Observer<String>() {
+//            @Override
+//            public void onChanged(String str) {
+//                binding.offerDestination1.setText(str);
+//            }
+//        };
+//        sharedViewModel.getOfferDestination1().observe(this, offerDestinationObserver1);
+//
+//        Observer<String> offerFeesObserver1 = new Observer<String>() {
+//            @Override
+//            public void onChanged(String str) {
+//                binding.offerFees1.setText(str);
+//            }
+//        };
+//        sharedViewModel.getOfferFees1().observe(this, offerFeesObserver1);
+
 
 //      edit purpose
         Observer<String> offerLocationObserver = new Observer<String>() {
@@ -70,7 +103,7 @@ public class myOffer extends Fragment {
         super.onCreate(savedInstanceState);
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-//      delete purpose
+///      delete purpose
         Observer<String> offerDeleteObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
@@ -127,18 +160,19 @@ public class myOffer extends Fragment {
             }
         });
 
-        createOfferBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_myOffer_to_createOffer);
-            }
-        });
-
         deleteOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sharedViewModel.setOfferDelete("delete");
                 binding.cardViewOffer1.setVisibility(View.GONE);
+            }
+        });
+
+        createOfferBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_myOffer_to_createOffer);
+                binding.cardViewOffer2.setVisibility(View.VISIBLE);
             }
         });
 
