@@ -106,7 +106,7 @@
                             android:src="@drawable/ic_baseline_emoji_people_24" />
 
                         <TextView
-                            android:id="@+id/requestLocation"
+                            android:id="@+id/requestLocation1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="10dp"
@@ -129,7 +129,7 @@
                             android:src="@drawable/ic_baseline_add_location_24" />
 
                         <TextView
-                            android:id="@+id/requestDestination"
+                            android:id="@+id/requestDestination1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="10dp"
@@ -152,7 +152,7 @@
                             android:src="@drawable/ic_baseline_price_check_24" />
 
                         <TextView
-                            android:id="@+id/requestFees"
+                            android:id="@+id/requestFees1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="10dp"

@@ -46,6 +46,31 @@ public class myRequest extends Fragment {
         };
         sharedViewModel.getRequestCreate().observe(this, requestCreateObserver);
 
+
+        Observer<String> requestLocationObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.requestLocation2.setText(str);
+            }
+        };
+        sharedViewModel.getRequestLocation1().observe(this, requestLocationObserver1);
+
+        Observer<String> requestDestinationObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.requestDestination2.setText(str);
+            }
+        };
+        sharedViewModel.getRequestDestination1().observe(this, requestDestinationObserver1);
+
+        Observer<String> requestFeesObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.requestFees2.setText(str);
+            }
+        };
+        sharedViewModel.getRequestFees1().observe(this, requestFeesObserver1);
+
 //        Observer<String> requestLocationObserver1 = new Observer<String>() {
 //            @Override
 //            public void onChanged(String str) {
@@ -74,7 +99,7 @@ public class myRequest extends Fragment {
         Observer<String> requestLocationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.requestLocation.setText(str);
+                binding.requestLocation1.setText(str);
             }
         };
         sharedViewModel.getRequestLocation().observe(this, requestLocationObserver);
@@ -82,7 +107,7 @@ public class myRequest extends Fragment {
         Observer<String> requestDestinationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.requestDestination.setText(str);
+                binding.requestDestination1.setText(str);
             }
         };
         sharedViewModel.getRequestDestination().observe(this, requestDestinationObserver);
@@ -90,7 +115,7 @@ public class myRequest extends Fragment {
         Observer<String> requestFeesObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.requestFees.setText(str);
+                binding.requestFees1.setText(str);
             }
         };
         sharedViewModel.getRequestFees().observe(this, requestFeesObserver);
@@ -148,7 +173,7 @@ public class myRequest extends Fragment {
         Observer<String> requestLocationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.requestLocation.setText(str);
+                binding.requestLocation1.setText(str);
             }
         };
         sharedViewModel.getRequestLocation().observe(this, requestLocationObserver);
@@ -156,7 +181,7 @@ public class myRequest extends Fragment {
         Observer<String> requestDestinationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.requestDestination.setText(str);
+                binding.requestDestination1.setText(str);
             }
         };
         sharedViewModel.getRequestDestination().observe(this, requestDestinationObserver);
@@ -164,7 +189,7 @@ public class myRequest extends Fragment {
         Observer<String> requestFeesObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.requestFees.setText(str);
+                binding.requestFees1.setText(str);
             }
         };
         sharedViewModel.getRequestFees().observe(this, requestFeesObserver);
