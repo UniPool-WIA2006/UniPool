@@ -37,6 +37,14 @@ public class myRequest extends Fragment {
         };
         sharedViewModel.getRequestDelete().observe(this, requestDeleteObserver);
 
+        Observer<String> requestDeleteObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.cardViewRequest2.setVisibility(View.GONE);
+            }
+        };
+        sharedViewModel.getRequestDelete1().observe(this, requestDeleteObserver1);
+
 //      create purpose
         Observer<String> requestCreateObserver = new Observer<String>() {
             @Override
@@ -71,29 +79,6 @@ public class myRequest extends Fragment {
         };
         sharedViewModel.getRequestFees1().observe(this, requestFeesObserver1);
 
-//        Observer<String> requestLocationObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.requestLocation2.setText(str);
-//            }
-//        };
-//        sharedViewModel.getRequestLocation1().observe(this, requestLocationObserver1);
-//
-//        Observer<String> requestDestinationObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.requestDestination2.setText(str);
-//            }
-//        };
-//        sharedViewModel.getRequestDestination1().observe(this, requestDestinationObserver1);
-//
-//        Observer<String> requestFeesObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.requestFees2.setText(str);
-//            }
-//        };
-//        sharedViewModel.getRequestFees1().observe(this, requestFeesObserver1);
 
 //      edit purpose
         Observer<String> requestLocationObserver = new Observer<String>() {
@@ -128,46 +113,14 @@ public class myRequest extends Fragment {
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
 //      delete purpose
-        Observer<String> requestDeleteObserver = new Observer<String>() {
+        Observer<String> requestDeleteObserver1 = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.cardViewRequest1.setVisibility(View.GONE);
+                binding.cardViewRequest2.setVisibility(View.GONE);
             }
         };
-        sharedViewModel.getRequestDelete().observe(this, requestDeleteObserver);
+        sharedViewModel.getRequestDelete1().observe(this, requestDeleteObserver1);
 
-//      create purpose
-//        Observer<String> requestCreateObserver = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.cardViewRequest2.setVisibility(View.VISIBLE);
-//            }
-//        };
-//        sharedViewModel.getRequestCreate().observe(this, requestCreateObserver);
-
-//        Observer<String> requestLocationObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.requestLocation2.setText(str);
-//            }
-//        };
-//        sharedViewModel.getRequestLocation1().observe(this, requestLocationObserver1);
-//
-//        Observer<String> requestDestinationObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.requestDestination2.setText(str);
-//            }
-//        };
-//        sharedViewModel.getRequestDestination1().observe(this, requestDestinationObserver1);
-//
-//        Observer<String> requestFeesObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.requestFees2.setText(str);
-//            }
-//        };
-//        sharedViewModel.getRequestFees1().observe(this, requestFeesObserver1);
 
 //      edit purpose
         Observer<String> requestLocationObserver = new Observer<String>() {
@@ -207,6 +160,7 @@ public class myRequest extends Fragment {
         CardView cardViewRequest1 = binding.cardViewRequest1;
         Button createNewRequest = binding.createNewRequestBtn;
         Button deleteRequestBtn = binding.deleteRequestBtn;
+        Button deleteRequestBtn1 = binding.deleteRequestBtn1;
 
         cardViewRequest1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,6 +174,14 @@ public class myRequest extends Fragment {
             public void onClick(View view) {
                 sharedViewModel.setRequestDelete("delete");
                 binding.cardViewRequest1.setVisibility(View.GONE);
+            }
+        });
+
+        deleteRequestBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedViewModel.setRequestDelete1("delete");
+                binding.cardViewRequest2.setVisibility(View.GONE);
             }
         });
 
