@@ -8,11 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.unipool.ui.chat.ChatFragment;
 import com.example.unipool.ui.login.RegisterActivity;
 
 public class MyApplication extends AppCompatActivity {
 
-    EditText username, password, repassword;
+    EditText username, password;
     Button signup, signin;
     DatabaseHandler DB;
     @Override
@@ -39,7 +40,14 @@ public class MyApplication extends AppCompatActivity {
                     Boolean checkuserpass = DB.checkusernamepassword(user, pass);
                     if(checkuserpass==true){
                         Toast.makeText(MyApplication.this, "Log in successfull", Toast.LENGTH_SHORT).show();
+
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("username", user);
+//                        ChatFragment chatFragment = new ChatFragment();
+//                        chatFragment.setArguments(bundle);
+
                         Intent intent  = new Intent(MyApplication.this, MainActivity.class);
+                        intent.putExtra("username", user);
                         startActivity(intent);
                     }else{
                         Toast.makeText(MyApplication.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
@@ -54,6 +62,12 @@ public class MyApplication extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public Bundle getUsername() {
+        Bundle bundle = new Bundle();
+        bundle.putString("username", username.getText().toString());
+        return bundle;
     }
 }
 

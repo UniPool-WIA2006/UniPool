@@ -10,10 +10,8 @@ import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
 import com.example.unipool.MainActivity;
-import com.example.unipool.MainActivity2;
+import com.example.unipool.MyApplication;
 import com.example.unipool.R;
-
-import io.getstream.chat.android.common.state.Edit;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -49,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(insert==true){
                             Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            intent.putExtra("username", user);
                             startActivity(intent);
                         }else{
                             Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
