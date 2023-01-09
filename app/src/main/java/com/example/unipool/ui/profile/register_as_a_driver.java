@@ -32,7 +32,7 @@ public class register_as_a_driver extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
 
-        Toast.makeText(register_as_a_driver.this, "Register Driver " + username, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(register_as_a_driver.this, "Register Driver " + username, Toast.LENGTH_SHORT).show();
 
 //        MainActivity activity = new MainActivity();
 //        username = activity.getUsername();
@@ -67,6 +67,7 @@ public class register_as_a_driver extends AppCompatActivity {
 //                Intent intent = new Intent(register_as_a_driver.this, profilePage2.class);
 //                intent.putExtra("username", username);
 //                startActivity(intent);
+                finish();
             }
         });
 

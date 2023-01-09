@@ -251,7 +251,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //        values.put(EMERGENCY_CONT_NAME, "user_emer_cont_name");
 //        values.put(EMERGENCY_CONT_NUM, "user_emer_cont_num");
         values.put(PASSWORD, password);
-//        values.put(STATUS, "status");
+        values.put(STATUS, "");
 //        values.put(CAR_MODEL, "car_model");
 //        values.put(VEH_COLOR, "veh_color");
 //        values.put(PLATE, "plate_no");

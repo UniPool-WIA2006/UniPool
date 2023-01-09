@@ -108,22 +108,40 @@ public class profile_page_1 extends Fragment {
         });
 
         //Go to Register As Driver Page
+        String driver = arr.get(8);
         Btn_RegAsDriver = binding.BtnRegAsDriver;
-        Btn_RegAsDriver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), register_as_a_driver.class);
-                intent.putExtra("username", username);
-                startActivity(intent);
+        if(driver.equals("Driver")) {
+            Btn_RegAsDriver.setText("UPDATE DRIVER INFO");
+            Btn_RegAsDriver.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), update_car_info.class);
+                    intent.putExtra("username", username);
+                    startActivity(intent);
 
 //                Fragment fragment = new Fragment();
 //                Bundle bundle = new Bundle();
 //                bundle.putString("username", username);
 //                fragment.setArguments(bundle);
 //                Navigation.findNavController(view).navigate(R.id.action_profile_page_1_to_register_as_a_driver);
-            }
-        });
+                }
+            });
+        } else {
+            Btn_RegAsDriver.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), register_as_a_driver.class);
+                    intent.putExtra("username", username);
+                    startActivity(intent);
 
+//                Fragment fragment = new Fragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("username", username);
+//                fragment.setArguments(bundle);
+//                Navigation.findNavController(view).navigate(R.id.action_profile_page_1_to_register_as_a_driver);
+                }
+            });
+        }
 
 
         //Change Profile Picture
