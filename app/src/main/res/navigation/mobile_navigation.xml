@@ -93,6 +93,9 @@
         <action
             android:id="@+id/action_myOffer_to_createOffer"
             app:destination="@id/createOffer" />
+        <action
+            android:id="@+id/action_myOffer_self"
+            app:destination="@id/myOffer" />
     </fragment>
     <fragment
         android:id="@+id/createOffer"
