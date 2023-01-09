@@ -21,7 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
+import com.example.unipool.MainActivity;
 import com.example.unipool.R;
+import com.example.unipool.databinding.ActivityEditProfileBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.lang.reflect.Array;
@@ -34,27 +36,31 @@ public class edit_profile extends AppCompatActivity {
     private AppCompatButton Btn_Save;
     private ImageButton btn_proceed_to_change_password;
     private DatabaseHandler dbHandler;
+    private String username;
 
+    private ActivityEditProfileBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+
+        binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //Validate Email
-        Btn_Save = findViewById(R.id.Btn_Save);
-        dbHandler = new DatabaseHandler(edit_profile.this);
-        Bundle bundle = getIntent().getExtras();
-        String username = bundle.getString("username");
+        Btn_Save = binding.BtnSave;
 
-        EditText ET_user_bio = findViewById(R.id.ET_Bio);
-        EditText ET_user_contact = findViewById(R.id.ET_ContactNumber);
-        EditText ET_user_email = findViewById(R.id.ET_Email);
-        EditText ET_user_emer_cont_name = findViewById(R.id.ET_EmerCont_Name);
-        EditText ET_user_emer_cont_num = findViewById(R.id.ET_EmerCont_Num);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        EditText ET_user_bio = binding.ETBio;
+        EditText ET_user_contact = binding.ETContactNumber;
+        EditText ET_user_email = binding.ETEmail;
+        EditText ET_user_emer_cont_name = binding.ETEmerContName;
+        EditText ET_user_emer_cont_num = binding.ETEmerContNum;
 
         //back to Profile Page 1
-        ImageButton btn_backEditProfile = (ImageButton) findViewById(R.id.btn_backEditProfile);
+        ImageButton btn_backEditProfile = binding.btnBackEditProfile;
         btn_backEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,22 +69,25 @@ public class edit_profile extends AppCompatActivity {
             }
         });
 
+        dbHandler = new DatabaseHandler(edit_profile.this);
         ArrayList<String> arr = dbHandler.searchUserInfo(username);
 
-        ET_user_bio.setText(arr.get(1));
-        ET_user_contact.setText(arr.get(3));
-        ET_user_email.setText(arr.get(4));
-        ET_user_emer_cont_name.setText(arr.get(5));
-        ET_user_emer_cont_num.setText(arr.get(6));
-        RadioGroup radioGroup = findViewById(R.id.radioGrp);
-        RadioButton RadioM = findViewById(R.id.radioM);
-        RadioButton RadioF = findViewById(R.id.radioF);
+//        ET_user_bio.setText(arr.get(1));
+//        ET_user_contact.setText(arr.get(3));
+//        ET_user_email.setText(arr.get(4));
+//        ET_user_emer_cont_name.setText(arr.get(5));
+//        ET_user_emer_cont_num.setText(arr.get(6));
+        RadioGroup radioGroup = binding.radioGrp;
+        RadioButton RadioM = binding.radioM;
+        RadioButton RadioF = binding.radioF;
 
         //radiobutton for gender, and this code will remember the user's last choice.
         String current_gender = arr.get(2);
         if (current_gender.equals("Male") || current_gender.equals("")) {
             RadioM.setChecked(true);
+            RadioF.setChecked(false);
         } else if (current_gender.equals("Female")) {
+            RadioM.setChecked(false);
             RadioF.setChecked(true);
         }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -86,12 +95,13 @@ public class edit_profile extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
                 String gender = radioButton.getText().toString();
+                Toast.makeText(edit_profile.this, gender, Toast.LENGTH_SHORT).show();
                 dbHandler.UpdateGender(username,gender);
             }
         });
 
         //Save Button
-        AppCompatButton Btn_Save = (AppCompatButton) findViewById(R.id.Btn_Save);
+        AppCompatButton Btn_Save = binding.BtnSave;
 
         Btn_Save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +139,7 @@ public class edit_profile extends AppCompatActivity {
         });
 
         //Change Password >
-        ImageButton btn_proceed_to_change_password = (ImageButton) findViewById(R.id.btn_proceed_to_change_password);
+        ImageButton btn_proceed_to_change_password = binding.btnProceedToChangePassword;
         btn_proceed_to_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

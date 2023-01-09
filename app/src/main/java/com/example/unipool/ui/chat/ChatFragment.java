@@ -36,7 +36,6 @@ public class ChatFragment extends Fragment {
     private final ChatClient client = ChatClient.instance();
     private final User user = new User();
     private String username;
-    private static final String USERNAME = "username";
 
     public ChatFragment() {
     }

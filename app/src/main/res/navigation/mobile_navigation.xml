@@ -10,10 +10,6 @@
         android:name="com.example.unipool.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_manage"
-            app:destination="@id/navigation_manage"
-            app:launchSingleTop="false" />
     </fragment>
 
     <fragment
@@ -33,9 +29,9 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.unipool.ui.profile.ProfileFragment"
+        android:name="com.example.unipool.ui.profile.profile_page_1"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile_page_1" />
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.unipool.ui.chat.UserFragment"
@@ -45,4 +41,9 @@
             android:id="@+id/action_userFragment_to_navigation_chat"
             app:destination="@id/navigation_chat" />
     </fragment>
+    <fragment
+        android:id="@+id/profile_page_2"
+        android:name="com.example.unipool.ui.profile.profile_page_2"
+        android:label="fragment_profile_page_2"
+        tools:layout="@layout/fragment_profile_page_2" />
 </navigation>

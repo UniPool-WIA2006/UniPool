@@ -86,7 +86,7 @@ public class profile_page_2 extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 fragment.setArguments(bundle);
-                Navigation.findNavController(view).navigate(R.id.action_profilePage2_to_edit_profile);
+//                Navigation.findNavController(view).navigate(R.id.action_profilePage2_to_edit_profile);
             }
         });
 
@@ -99,7 +99,7 @@ public class profile_page_2 extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 fragment.setArguments(bundle);
-                Navigation.findNavController(view).navigate(R.id.action_profile_page_1_to_update_car_info);
+//                Navigation.findNavController(view).navigate(R.id.action_profile_page_1_to_update_car_info);
             }
         });
 
@@ -160,7 +160,7 @@ public class profile_page_2 extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 fragment.setArguments(bundle);
-                Navigation.findNavController(view).navigate(R.id.action_profilePage2_to_edit_profile);
+//                Navigation.findNavController(view).navigate(R.id.action_profilePage2_to_edit_profile);
             }
         });
 
@@ -173,7 +173,7 @@ public class profile_page_2 extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 fragment.setArguments(bundle);
-                Navigation.findNavController(view).navigate(R.id.action_profile_page_1_to_update_car_info);
+//                Navigation.findNavController(view).navigate(R.id.action_profile_page_1_to_update_car_info);
             }
         });
 

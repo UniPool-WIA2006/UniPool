@@ -16,42 +16,65 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.profile.feedback_driver"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.profile.feedback_passenger"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.profile.update_car_info"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.profile.edit_profile"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.profile.change_password"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+            android:name=".ui.profile.register_as_a_driver"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.chat.ChannelActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+        android:name=".ui.login.RegisterActivity"
+        android:exported="true"
+        android:label="@string/title_activity_login" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".MyApplication"
             android:exported="true">
@@ -61,18 +84,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.login.RegisterActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

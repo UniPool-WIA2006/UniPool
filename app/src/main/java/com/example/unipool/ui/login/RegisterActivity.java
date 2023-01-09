@@ -23,6 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Toast.makeText(this, "Username cannot be changed once registered", Toast.LENGTH_LONG).show();
+
         username = (EditText) findViewById(R.id.fillname);
         password = (EditText) findViewById(R.id.fillpassword);
         email = (EditText) findViewById(R.id.fillemail);
