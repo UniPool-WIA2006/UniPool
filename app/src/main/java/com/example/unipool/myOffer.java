@@ -46,37 +46,37 @@ public class myOffer extends Fragment {
             }
         };
         sharedViewModel.getOfferCreate().observe(this, offerCreateObserver);
+//disini
+        Observer<String> offerLocationObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerLocation2.setText(str);
+            }
+        };
+        sharedViewModel.getOfferLocation1().observe(this, offerLocationObserver1);
 
-//        Observer<String> offerLocationObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.offerLocation1.setText(str);
-//            }
-//        };
-//        sharedViewModel.getOfferLocation1().observe(this, offerLocationObserver1);
-//
-//        Observer<String> offerDestinationObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.offerDestination1.setText(str);
-//            }
-//        };
-//        sharedViewModel.getOfferDestination1().observe(this, offerDestinationObserver1);
-//
-//        Observer<String> offerFeesObserver1 = new Observer<String>() {
-//            @Override
-//            public void onChanged(String str) {
-//                binding.offerFees1.setText(str);
-//            }
-//        };
-//        sharedViewModel.getOfferFees1().observe(this, offerFeesObserver1);
+        Observer<String> offerDestinationObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerDestination2.setText(str);
+            }
+        };
+        sharedViewModel.getOfferDestination1().observe(this, offerDestinationObserver1);
+
+        Observer<String> offerFeesObserver1 = new Observer<String>() {
+            @Override
+            public void onChanged(String str) {
+                binding.offerFees2.setText(str);
+            }
+        };
+        sharedViewModel.getOfferFees1().observe(this, offerFeesObserver1);
 
 
 //      edit purpose
         Observer<String> offerLocationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.offerLocation.setText(str);
+                binding.offerLocation1.setText(str);
             }
         };
         sharedViewModel.getOfferLocation().observe(this, offerLocationObserver);
@@ -84,7 +84,7 @@ public class myOffer extends Fragment {
         Observer<String> offerDestinationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.offerDestination.setText(str);
+                binding.offerDestination1.setText(str);
             }
         };
         sharedViewModel.getOfferDestination().observe(this, offerDestinationObserver);
@@ -92,7 +92,7 @@ public class myOffer extends Fragment {
         Observer<String> offerFeesObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.offerFees.setText(str);
+                binding.offerFees1.setText(str);
             }
         };
         sharedViewModel.getOfferFees().observe(this, offerFeesObserver);
@@ -116,7 +116,7 @@ public class myOffer extends Fragment {
         Observer<String> offerLocationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.offerLocation.setText(str);
+                binding.offerLocation1.setText(str);
             }
         };
         sharedViewModel.getOfferLocation().observe(this, offerLocationObserver);
@@ -124,7 +124,7 @@ public class myOffer extends Fragment {
         Observer<String> offerDestinationObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.offerDestination.setText(str);
+                binding.offerDestination1.setText(str);
             }
         };
         sharedViewModel.getOfferDestination().observe(this, offerDestinationObserver);
@@ -132,7 +132,7 @@ public class myOffer extends Fragment {
         Observer<String> offerFeesObserver = new Observer<String>() {
             @Override
             public void onChanged(String str) {
-                binding.offerFees.setText(str);
+                binding.offerFees1.setText(str);
             }
         };
         sharedViewModel.getOfferFees().observe(this, offerFeesObserver);
