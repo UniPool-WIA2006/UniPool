@@ -22,9 +22,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // below variable is for our table name.
     private static final String TABLE_NAME1 = "UserProfile";
+    private static final String TABLE_NAME2 = "ProfileImage";
+
 
     //Column name for TABLE 1 "UserProfile"
-    private static final String PREV_USERNAME = "prev_name";
     private static final String USERNAME = "name"; //PK
     private static final String BIO = "bio";
     private static final String GENDER = "gender";
@@ -40,6 +41,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String LICENSE_EXP = "license_expiry";
     private static final String TRUST_POINT = "trust_point";
 
+    //Column name for TABLE 2 "ProfileImage"
+    private static final String PROFILE_IMAGE = "imageTEXT";
+
     // creating a constructor for our database handler.
     public DatabaseHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -53,7 +57,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // setting our column names
         // along with their data types.
         String query1 = "CREATE TABLE " + TABLE_NAME1 + " ("
-                + PREV_USERNAME + " TEXT,"
                 + USERNAME + " TEXT PRIMARY KEY,"
                 + BIO + " TEXT,"
                 + GENDER + " TEXT,"
@@ -69,9 +72,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + LICENSE_EXP + " TEXT,"
                 + TRUST_POINT + " INT)";
 
+        String query2 = "CREATE TABLE " + TABLE_NAME2 + " ("
+                + USERNAME + " TEXT PRIMARY KEY,"
+                + PROFILE_IMAGE + " TEXT)";
+
+
         // at last we are calling a exec sql
         // method to execute above sql query
         db.execSQL(query1);
+        db.execSQL(query2);
     }
 
     // this method is use to update user profile information to our sqlite database.
@@ -87,7 +96,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         // on below line we are passing all values along with its key and value pair.
-        values.put(PREV_USERNAME, prev_name);
         values.put(USERNAME, username);
         values.put(BIO, user_bio);
         values.put(GENDER, user_gender);
@@ -122,29 +130,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EMERGENCY_CONT_NAME, user_emer_cont_name);
         values.put(EMERGENCY_CONT_NUM, user_emer_cont_num);
         //db.update(TABLE_NAME1, values, "name=?", new String[]{originalUsername});
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
         db.close();
+    }
+
+    //Update image
+    public void AddProfileImage(String username, String image) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME, username);
+        values.put(PROFILE_IMAGE, image);
+        db.insert(TABLE_NAME2, null,values);
+    }
+
+    //Update image
+    public void UpdateProfileImage(String username, String image) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PROFILE_IMAGE, image);
+        db.update(TABLE_NAME2, values, USERNAME + " = ?", new String[]{username});
     }
 
     public void UpdatePassword(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(PASSWORD,password);
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
     }
 
     public void UpdateGender(String username, String gender){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(GENDER, gender);
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
     }
 
     public void UpdateStatus(String username, String status){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(STATUS, status);
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
     }
 
     public void UpdateCarInfo(String username, String car_model, String veh_color, String plate_no, String license_exp){
@@ -154,22 +179,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(VEH_COLOR, veh_color);
         values.put(PLATE, plate_no);
         values.put(LICENSE_EXP, license_exp);
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
     }
 
     public void UpdateTrustPoint(String username, int trust_point){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(TRUST_POINT, trust_point);
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
-    }
-
-
-    public void UpdateOriginalUsername(String username, String original_username){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(PREV_USERNAME, original_username);
-        db.update(TABLE_NAME1, values, USERNAME + " = " + username, null);
+        db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
     }
 
     @Override
@@ -186,48 +203,75 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ArrayList<String> arr = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
-                arr.add(cursor.getString(0)); //prev_username
-                arr.add(cursor.getString(1)); //username
-                arr.add(cursor.getString(2)); //bio
-                arr.add(cursor.getString(3)); //gender
-                arr.add(cursor.getString(4)); //contact_no
-                arr.add(cursor.getString(5)); //email
-                arr.add(cursor.getString(6)); //emergency_contact_name
-                arr.add(cursor.getString(7)); //emergency_contact_no
-                arr.add(cursor.getString(8)); //password
-                arr.add(cursor.getString(9)); //status (driver/ not a driver)
-                arr.add(cursor.getString(10)); //car_model
-                arr.add(cursor.getString(11)); //vehicle_color
-                arr.add(cursor.getString(12)); //plate_number
-                arr.add(cursor.getString(13)); //license_expiry_date
-                arr.add(cursor.getString(14)); //trust_point
-                arr.add(cursor.getString(15)); //online_status
+                arr.add(cursor.getString(0)); //username
+                arr.add(cursor.getString(1)); //bio
+                arr.add(cursor.getString(2)); //gender
+                arr.add(cursor.getString(3)); //contact_no
+                arr.add(cursor.getString(4)); //email
+                arr.add(cursor.getString(5)); //emergency_contact_name
+                arr.add(cursor.getString(6)); //emergency_contact_no
+                arr.add(cursor.getString(7)); //password
+                arr.add(cursor.getString(8)); //status (driver/ not a driver)
+                arr.add(cursor.getString(9)); //car_model
+                arr.add(cursor.getString(10)); //vehicle_color
+                arr.add(cursor.getString(11)); //plate_number
+                arr.add(cursor.getString(12)); //license_expiry_date
+                arr.add(cursor.getString(13)); //trust_point
             } while (cursor.moveToNext());
         }
         cursor.close();
         return arr;
     }
 
-    public String getOnlineUsername(){
+    public ArrayList<String> searchUserProfilePicture(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT name FROM " + TABLE_NAME1 + " WHERE online_status = 'Online' " , null);
-        return cursor.getString(0);
+        Cursor cursor = db.rawQuery("Select * from " + TABLE_NAME2 + " where " + USERNAME + " = ?", new String[]{username});
+        ArrayList<String> arr = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                arr.add(cursor.getString(1)); //profile pic byte[]
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return arr;
     }
 
 
     //For user registration and login
     public Boolean insertData(String username, String password, String email, String contact){
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        ContentValues contentValues= new ContentValues();
+        ContentValues values= new ContentValues();
+//        values.put(PREV_USERNAME, "prev_name");
+        values.put(USERNAME, username);
+//        values.put(BIO, "user_bio");
+        //default gender is Male
+        values.put(GENDER, "Male");
+        values.put(CONTACT_NO, contact);
+        values.put(EMAIL, email);
+//        values.put(EMERGENCY_CONT_NAME, "user_emer_cont_name");
+//        values.put(EMERGENCY_CONT_NUM, "user_emer_cont_num");
+        values.put(PASSWORD, password);
+//        values.put(STATUS, "status");
+//        values.put(CAR_MODEL, "car_model");
+//        values.put(VEH_COLOR, "veh_color");
+//        values.put(PLATE, "plate_no");
+//        values.put(LICENSE_EXP, "license_exp");
+        values.put(TRUST_POINT, 100);
+
+        ContentValues contentValues = new ContentValues();
         contentValues.put(USERNAME, username);
-        contentValues.put(PASSWORD, password);
-        contentValues.put(EMAIL, email);
-        contentValues.put(CONTACT_NO, contact);
+        //Default picture
+        contentValues.put(PROFILE_IMAGE, "file:///storage/emulated/0/Android/data/com.example.unipool/files/DCIM/IMG_20230109_203633960.jpg");
+        MyDB.insert(TABLE_NAME2, null, contentValues);
+//        contentValues.put(USERNAME, username);
+//        contentValues.put(PASSWORD, password);
+//        contentValues.put(EMAIL, email);
+//        contentValues.put(CONTACT_NO, contact);
 //        contentValues.put(BIO, "temp");
 //        contentValues.put(GENDER, "temp");
 //        contentValues.put(EMERGENCY_CONT_NAME, "temp");
 //        contentValues.put(EMERGENCY_CONT_NUM, "temp");
-        long result = MyDB.insert(TABLE_NAME1, null, contentValues);
+        long result = MyDB.insert(TABLE_NAME1, null, values);
         if(result==-1)
             return false;
         else

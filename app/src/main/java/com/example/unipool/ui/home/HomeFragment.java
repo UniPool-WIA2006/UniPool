@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_manage);
+//                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_manage);
             }
         });
 

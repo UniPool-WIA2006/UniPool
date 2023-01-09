@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
+import com.example.unipool.MainActivity;
 import com.example.unipool.R;
 
 import java.util.ArrayList;
@@ -20,14 +21,22 @@ public class register_as_a_driver extends AppCompatActivity {
     private ImageButton btn_backRegAsDriver;
     private AppCompatButton Btn_Register_Driver;
     private DatabaseHandler dbHandler;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_as_adriver);
         dbHandler = new DatabaseHandler(register_as_a_driver.this);
-        Bundle bundle = getIntent().getExtras();
-        String username = bundle.getString("username");
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        Toast.makeText(register_as_a_driver.this, "Register Driver " + username, Toast.LENGTH_SHORT).show();
+
+//        MainActivity activity = new MainActivity();
+//        username = activity.getUsername();
+
         EditText ET_Car_Model = findViewById(R.id.ET_CarModel);
         EditText ET_Vehicle_Color = findViewById(R.id.ET_VehicleColour);
         EditText ET_Plate_No = findViewById(R.id.ET_PlateNumber);
@@ -55,9 +64,9 @@ public class register_as_a_driver extends AppCompatActivity {
                 dbHandler.UpdateStatus(username, "Driver");
                 dbHandler.UpdateCarInfo(username,car_model,vec_color,plate_no,license_exp);
                 Toast.makeText(register_as_a_driver.this, "Successfully registered as a driver!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(register_as_a_driver.this, profilePage2.class);
-                intent.putExtra("username", username);
-                startActivity(intent);
+//                Intent intent = new Intent(register_as_a_driver.this, profilePage2.class);
+//                intent.putExtra("username", username);
+//                startActivity(intent);
             }
         });
 

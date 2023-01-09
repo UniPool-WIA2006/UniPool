@@ -1,7 +1,5 @@
 package com.example.unipool.ui.profile;
 
-package com.example.profilepage2;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
