@@ -36,7 +36,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editDestination"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,6 +48,7 @@
         app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDestination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"/>
@@ -56,7 +56,6 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editFees"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,6 +67,7 @@
         app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editFees"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,6 @@
         android:background="#4B000000" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editNotes"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,6 +91,7 @@
         app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editExtraNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />

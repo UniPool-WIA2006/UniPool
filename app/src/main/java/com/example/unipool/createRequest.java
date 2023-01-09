@@ -20,7 +20,15 @@ import com.example.unipool.ui.home.HomeViewModel;
 
 public class createRequest extends Fragment {
 
+    private SharedViewModel sharedViewModel;
     private FragmentCreateRequestBinding binding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -34,14 +42,18 @@ public class createRequest extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button createRequestBtn = binding.submitRequestBtn;
+        Button submitRequestBtn = binding.submitRequestBtn;
 
-        createRequestBtn.setOnClickListener(new View.OnClickListener() {
+        submitRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                sharedViewModel.setRequestCreate("visible");
+                sharedViewModel.setRequestLocation(binding.createLocationSave.getText().toString());
+                sharedViewModel.setRequestDestination(binding.createDestinationSave.getText().toString());
+                sharedViewModel.setRequestFees(binding.createFeesSave.getText().toString());
+                sharedViewModel.setRequestExtraNotes(binding.createExtraNotesSave.getText().toString());
                 Navigation.findNavController(view).navigate(R.id.action_createRequest_to_navigation_home);
             }
         });
-
     }
 }

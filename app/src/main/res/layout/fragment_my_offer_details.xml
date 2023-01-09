@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.viewOfferDetails"
     android:orientation="vertical">
 
     <LinearLayout
@@ -74,6 +73,7 @@
                 android:layout_marginHorizontal="10dp"
                 />
             <TextView
+                android:id="@+id/offerDetailsLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location: Phileo Damansara"
@@ -100,6 +100,7 @@
                 android:layout_marginHorizontal="10dp"
                 />
             <TextView
+                android:id="@+id/offerDetailsDestination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Destination: UM Central"
@@ -126,6 +127,7 @@
                 android:layout_marginHorizontal="10dp"
                 />
             <TextView
+                android:id="@+id/offerDetailsFees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fees: Free"
@@ -178,6 +180,7 @@
                 android:layout_marginHorizontal="10dp"
                 />
             <TextView
+                android:id="@+id/offerDetailsExtraNotes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Extra Note: Please arrive on time. I have a very tight schedule. Thank you!"
@@ -202,19 +205,9 @@
             android:backgroundTint="#2C74C1"
             android:padding="15dp"
             android:text="Edit Offer"
-            android:textSize="15dp"
-            android:layout_margin="10dp"/>
+            android:textSize="20dp"
+            android:layout_margin="25dp"/>
 
-        <Button
-            android:id="@+id/deleteOfferBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#DF1D1D"
-            android:padding="15dp"
-            android:text="Delete Offer"
-            android:textSize="15dp"
-            android:layout_margin="6dp"/>
     </LinearLayout>
 
 

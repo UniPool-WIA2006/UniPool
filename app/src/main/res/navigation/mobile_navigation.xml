@@ -62,6 +62,9 @@
         <action
             android:id="@+id/action_myRequestDetails_to_editRequestDetails"
             app:destination="@id/editRequestDetails" />
+        <action
+            android:id="@+id/action_myRequestDetails_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/editRequestDetails"
@@ -106,6 +109,9 @@
         <action
             android:id="@+id/action_myOfferDetails_to_editOfferDetails"
             app:destination="@id/editOfferDetails" />
+        <action
+            android:id="@+id/action_myOfferDetails_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/editOfferDetails"
