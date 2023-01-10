@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentUserBinding;
@@ -32,7 +33,7 @@ public class UserFragment extends Fragment {
 
     private FragmentUserBinding binding;
     private ChatClient client = ChatClient.instance();
-    private UserAdapter adapter;
+    private UserAdapter adapter = new UserAdapter();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,13 +69,14 @@ public class UserFragment extends Fragment {
     private void queryAllUsers() {
         FilterObject filter = Filters.autocomplete("id", client.getCurrentUser().getId());
         int offset = 0;
-        int limit = 100;
+        int limit = 10;
         QueryUsersRequest request = new QueryUsersRequest(filter, offset, limit);
 
         client.queryUsers(request).enqueue(result -> {
             if (result.isSuccess()) {
                 List<User> users = result.data();
-                adapter.setUserList(users);
+//                adapter.setData(users);
+                Toast.makeText(getActivity(), "no user to add as friend", Toast.LENGTH_LONG).show();
             } else {
                 Log.e("UsersFragment", result.error().getMessage().toString());
             }

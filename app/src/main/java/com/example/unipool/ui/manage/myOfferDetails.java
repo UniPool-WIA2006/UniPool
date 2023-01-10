@@ -1,4 +1,4 @@
-package com.example.unipool;
+package com.example.unipool.ui.manage;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.unipool.databinding.FragmentHomeBinding;
+import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentMyOfferDetailsBinding;
 import com.example.unipool.ui.home.HomeViewModel;
 

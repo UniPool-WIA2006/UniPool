@@ -1,34 +1,24 @@
 package com.example.unipool.ui.profile;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
-import com.example.unipool.MainActivity;
-import com.example.unipool.R;
 import com.example.unipool.databinding.ActivityEditProfileBinding;
-import com.google.android.material.textfield.TextInputLayout;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class edit_profile extends AppCompatActivity {
 

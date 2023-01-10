@@ -176,25 +176,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Btn_EditProfile"
-        android:layout_width="102dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="108dp"
+        android:id="@+id/Btn_RegAsDriver"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="120dp"
         android:background="#3D5A80"
-        android:text="Edit Profile"
+        android:text="Register As a Driver"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Btn_RegAsDriver"
-        android:layout_width="160dp"
+        android:id="@+id/Btn_EditProfile"
+        android:layout_width="102dp"
         android:layout_height="46dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginBottom="120dp"
         android:background="#3D5A80"
-        android:text="Register As a Driver"
+        android:text="Edit Profile"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Btn_RegAsDriver" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="#3D5A80"
+        android:text="Logout"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

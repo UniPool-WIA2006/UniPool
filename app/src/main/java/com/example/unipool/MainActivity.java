@@ -1,7 +1,10 @@
 package com.example.unipool;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.unipool.ui.chat.ChatFragment;
@@ -16,6 +19,9 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.unipool.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 import io.getstream.chat.android.client.ChatClient;
 import io.getstream.chat.android.client.logger.ChatLogLevel;
@@ -28,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private String username;
+    private DatabaseHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,33 @@ public class MainActivity extends AppCompatActivity {
         username = intent.getStringExtra("username");
 
         Toast.makeText(MainActivity.this, "Welcome " + username, Toast.LENGTH_SHORT).show();
+
+        dbHandler = new DatabaseHandler(this);
+        ArrayList<String> arr = dbHandler.searchUserInfo(username);
+
+        ImageView imageView = binding.imageView2;
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Notification.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton emergency = binding.emergency;
+        emergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phone = arr.get(6);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                if(phone.equals(null))
+                    intent.setData(Uri.parse("tel:999"));
+                else
+                    intent.setData(Uri.parse("tel:"+phone));
+
+                startActivity(intent);
+            }
+        });
 
         // Authenticate and connect the user
 //        User user = new User();

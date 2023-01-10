@@ -10,8 +10,6 @@
         android:name="com.example.unipool.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-    </fragment>
-        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_myRequest"
             app:destination="@id/myRequest" />
@@ -60,14 +58,8 @@
             app:destination="@id/navigation_chat" />
     </fragment>
     <fragment
-        android:id="@+id/profile_page_2"
-        android:name="com.example.unipool.ui.profile.profile_page_2"
-        android:label="fragment_profile_page_2"
-        tools:layout="@layout/fragment_profile_page_2" />
-        tools:layout="@layout/fragment_profile" />
-    <fragment
         android:id="@+id/myRequest"
-        android:name="com.example.unipool.myRequest"
+        android:name="com.example.unipool.ui.manage.myRequest"
         android:label="My Request" >
         <action
             android:id="@+id/action_myRequest_to_myRequestDetails"
@@ -78,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/myRequestDetails"
-        android:name="com.example.unipool.myRequestDetails"
+        android:name="com.example.unipool.ui.manage.myRequestDetails"
         android:label="Request Details" >
         <action
             android:id="@+id/action_myRequestDetails_to_editRequestDetails"
@@ -89,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/editRequestDetails"
-        android:name="com.example.unipool.editRequestDetails"
+        android:name="com.example.unipool.ui.manage.editRequestDetails"
         android:label="Edit Request" >
         <action
             android:id="@+id/action_editRequestDetails_to_navigation_home"
@@ -97,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/createRequest"
-        android:name="com.example.unipool.createRequest"
+        android:name="com.example.unipool.ui.manage.createRequest"
         android:label="Create Request" >
         <action
             android:id="@+id/action_createRequest_to_navigation_home"
@@ -105,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/myOffer"
-        android:name="com.example.unipool.myOffer"
+        android:name="com.example.unipool.ui.manage.myOffer"
         android:label="My Offer" >
 
         <action
@@ -120,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/createOffer"
-        android:name="com.example.unipool.createOffer"
+        android:name="com.example.unipool.ui.manage.createOffer"
         android:label="Create Offer" >
         <action
             android:id="@+id/action_createOffer_to_navigation_home"
@@ -128,7 +120,7 @@
     </fragment>
     <fragment
         android:id="@+id/myOfferDetails"
-        android:name="com.example.unipool.myOfferDetails"
+        android:name="com.example.unipool.ui.manage.myOfferDetails"
         android:label="Offer Details" >
         <action
             android:id="@+id/action_myOfferDetails_to_editOfferDetails"
@@ -139,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/editOfferDetails"
-        android:name="com.example.unipool.editOfferDetails"
+        android:name="com.example.unipool.ui.manage.editOfferDetails"
         android:label="Edit Offer" >
         <action
             android:id="@+id/action_editOfferDetails_to_navigation_home"
@@ -147,7 +139,7 @@
     </fragment>
     <fragment
         android:id="@+id/manageCarpoolRequest"
-        android:name="com.example.unipool.manageCarpoolRequest"
+        android:name="com.example.unipool.ui.manage.manageCarpoolRequest"
         android:label="Carpool Request" >
         <action
             android:id="@+id/action_manageCarpoolRequest_to_navigation_manage"
@@ -161,16 +153,16 @@
     </fragment>
     <fragment
         android:id="@+id/carpoolOffer1"
-        android:name="com.example.unipool.carpoolOffer1"
+        android:name="com.example.unipool.ui.manage.carpoolOffer1"
         android:label="Carpool Offer"
         tools:layout="@layout/fragment_carpool_offer2" />
     <fragment
         android:id="@+id/carpoolOffer2"
-        android:name="com.example.unipool.carpoolOffer2"
+        android:name="com.example.unipool.ui.manage.carpoolOffer2"
         android:label="Carpool Offer" />
     <fragment
         android:id="@+id/carpoolRequest1"
-        android:name="com.example.unipool.carpoolRequest1"
+        android:name="com.example.unipool.ui.manage.carpoolRequest1"
         android:label="Carpool Request" />
     <fragment
         android:id="@+id/carpoolRequest2"

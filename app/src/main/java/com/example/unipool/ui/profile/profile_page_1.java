@@ -1,12 +1,9 @@
 package com.example.unipool.ui.profile;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -19,8 +16,8 @@ import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
 import com.example.unipool.MainActivity;
+import com.example.unipool.MyApplication;
 import com.example.unipool.R;
-import com.example.unipool.databinding.FragmentChatBinding;
 import com.example.unipool.databinding.FragmentProfilePage1Binding;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 /*
@@ -29,8 +26,6 @@ import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import de.hdodenhof.circleimageview.CircleImageView;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
 
@@ -38,6 +33,7 @@ import java.util.ArrayList;
 public class profile_page_1 extends Fragment {
     private Button Btn_EditProfile;
     private Button Btn_RegAsDriver;
+    private Button btn_logout;
     private TextView TV_username, TV_bio, TV_contact, TV_email, TV_emer_cont, TV_trust_point;
     private ProgressBar progressBar;
     private DatabaseHandler dbHandler;
@@ -160,6 +156,16 @@ public class profile_page_1 extends Fragment {
                         .compress(1024) //Final image size will be less than 1MB (Optional)
                         .maxResultSize(1080, 1080)
                         .start(20);
+            }
+        });
+
+        btn_logout = binding.logout;
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MyApplication.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 

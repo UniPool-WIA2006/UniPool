@@ -21,6 +21,7 @@ import io.getstream.chat.android.client.models.User;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,9 +32,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     UserRowLayoutBinding binding;
     private Context context;
-    private List<User> userList;
+    private List<User> userList = Collections.<User>emptyList();
     private ChatClient client = ChatClient.instance();
     // i3 & create constructor also
+
+    public UserAdapter() {
+
+    }
 
     public UserAdapter(Context context, List<User> userList) {
         this.context = context;
@@ -52,10 +57,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User currentUser = userList.get(position);
 
-        binding.avatarImageView.setUserData(currentUser);
-        binding.usernameTextView.setText(currentUser.getId());
-        binding.lastActiveTextView.setText(convertDate(currentUser.getLastActive().getTime()));
-        binding.rootLayout.setOnClickListener(view -> {
+        holder.binding.avatarImageView.setUserData(currentUser);
+        holder.binding.usernameTextView.setText(currentUser.getId());
+        holder.binding.lastActiveTextView.setText(convertDate(currentUser.getLastActive().getTime()));
+        holder.binding.rootLayout.setOnClickListener(view -> {
             createNewChannel(currentUser.getId(), holder);
         });
     }
@@ -76,6 +81,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                         Log.d( "ChatFragment", result.error().getMessage());
                     }
                 });
+
     }
 
     private void navigateToChatFragment(MyViewHolder holder, String cid) {
@@ -89,8 +95,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         return userList.size();
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setData(List<User> newList) {
+        this.userList = newList;
         notifyDataSetChanged();
     }
 

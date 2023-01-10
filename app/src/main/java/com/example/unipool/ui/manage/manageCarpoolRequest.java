@@ -1,4 +1,4 @@
-package com.example.unipool;
+package com.example.unipool.ui.manage;
 
 import android.os.Bundle;
 
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentManageBinding;
 import com.example.unipool.databinding.FragmentManageCarpoolRequestBinding;
 import com.example.unipool.ui.manage.ManageViewModel;

@@ -85,4 +85,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/emergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:backgroundTint="#3D5A80"
+        app:srcCompat="@drawable/phone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

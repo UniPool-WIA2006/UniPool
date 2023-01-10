@@ -1,6 +1,5 @@
 package com.example.unipool.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.unipool.R;
-import com.example.unipool.SharedViewModel;
+import com.example.unipool.ui.manage.SharedViewModel;
 import com.example.unipool.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
