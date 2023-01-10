@@ -1,0 +1,402 @@
+[33mcommit 9eb35d4bf72e54fc28dba0ba4375afe21e9af0dc[m[33m ([m[1;36mHEAD -> [m[1;32mSafety[m[33m, [m[1;31morigin/Safety[m[33m)[m
+Merge: 1ddcf19 191083a
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 09:26:01 2023 +0800
+
+    Merge branch 'Safety' of https://github.com/UniPool-WIA2006/UniPool into Safety
+
+[33mcommit 1ddcf192595bd9dfb9f10d0c4e09f52095e3e371[m[33m ([m[1;31morigin/Final[m[33m, [m[1;32mFinal[m[33m)[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 09:21:45 2023 +0800
+
+    final
+
+[33mcommit a6cf695a4d9ac6893bf3a601c513a9e8d8a98077[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 04:39:13 2023 +0800
+
+    -remove unused files
+    -bug left
+    *request*
+    -> 2nd cv muncul balik lepas delete
+    *offer*
+    -> 1st and 2nd cv muncul balik lepas delete
+
+[33mcommit bdc8375e455da9e16d35fcae0ebc16bb009dd20a[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 04:20:46 2023 +0800
+
+    -add rate button for for manage
+    -bug left
+    *request*
+    -> 2nd cv muncul balik lepas delete
+    *offer*
+    -> 1st and 2nd cv muncul balik lepas delete
+
+[33mcommit da899e788ae814ae92cdf9e4674e88800681d4f9[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 02:14:53 2023 +0800
+
+    bug left
+    *request*
+    -2nd cv muncul balik lepas delete
+    *offer*
+    -1st and 2nd cv muncul balik lepas delete
+
+[33mcommit 7200e5b0b0539bc7fd0a4dcde14cd58f4e53c359[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 01:52:22 2023 +0800
+
+    fixed bug terbalik data
+
+[33mcommit 8d45c9099fdd8023c745428d9251e7089f7c1ae7[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 01:43:42 2023 +0800
+
+    bug terbalik binding
+
+[33mcommit e43e6234fb4d94baa629ba7c4dcf8376c773811f[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 01:13:21 2023 +0800
+
+    latest (delete)
+
+[33mcommit 4a3eb7bf3a5db6ddfff114831268e63929cf789c[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 00:53:53 2023 +0800
+
+    latest (delete)
+
+[33mcommit 253f4e20eae3650fab999d8d749d2f53155d633d[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 00:18:30 2023 +0800
+
+    latest (delete)
+
+[33mcommit 02e0a4c6943674d870c36a62c8e67d40ba6c78b9[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 00:07:27 2023 +0800
+
+    latest (delete)
+
+[33mcommit 49fd0975b60340fb22bd5640a5f5940570b34955[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:24:41 2023 +0800
+
+    fragment change to activity
+
+[33mcommit 7805624e188bc606865d0a9a93fbc713df43f69f[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:18:43 2023 +0800
+
+    fragment change to activity
+
+[33mcommit 8cb1933ab30c8aca964ca87b5b51fd143d2df179[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:39:46 2023 +0800
+
+    terpaling latest
+
+[33mcommit 562e73b82c839e40b0f8a9b9c4646090df4eed9e[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:15:21 2023 +0800
+
+    latest update
+
+[33mcommit 55df12a8a444429903b2521246feae199ad0a1a6[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:10:57 2023 +0800
+
+    fragment change to activity
+
+[33mcommit 98656a0cdeda32d8c2fd60fb74798b0c0c079341[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Wed Jan 4 10:44:43 2023 +0800
+
+    fragment change to activity
+
+[33mcommit 66d7020cb85c6492071b2b199d00c4cca12463d7[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 2 19:18:33 2023 +0800
+
+    home
+
+[33mcommit ba4b3cab74873fc4b19327e774bdeca5cf5e0277[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 06:16:28 2023 +0800
+
+    Update changes
+
+[33mcommit e80b32e2d486272012674648beb0281d921a3155[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 04:45:03 2023 +0800
+
+    Added profile
+
+[33mcommit e4d8cba599e53ec4e4cea32b523c9fc3393cdfef[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 03:45:29 2023 +0800
+
+    2 feedback layout
+
+[33mcommit 9e62e8109fff572f6dffa576cf9b7d79f5d99347[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 03:29:04 2023 +0800
+
+    2 fragment
+
+[33mcommit 4b7bff80e4ffe414164408a93635c798df64bd0d[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 02:18:16 2023 +0800
+
+    4 activity of profile
+
+[33mcommit 1de5ae8acc1a7355d19bf118e7c6b458a0d95a55[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 01:54:31 2023 +0800
+
+    new drawables
+
+[33mcommit 191083af07c2cb4db3fb10833775d9eed453aaf6[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 09:21:45 2023 +0800
+
+    final
+
+[33mcommit 0c92a71401fc05b65479d50ab59a10bef73c6952[m
+Merge: cb19657 5073a07
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 06:22:59 2023 +0800
+
+    Merge branch 'izzul' into Safety
+    
+    # Conflicts:
+    #       app/build.gradle
+    #       app/src/main/AndroidManifest.xml
+    #       app/src/main/java/com/example/unipool/DatabaseHandler.java
+    #       app/src/main/java/com/example/unipool/MainActivity.java
+    #       app/src/main/java/com/example/unipool/ui/chat/ChatFragment.java
+    #       app/src/main/java/com/example/unipool/ui/home/HomeFragment.java
+    #       app/src/main/java/com/example/unipool/ui/manage/ManageFragment.java
+    #       app/src/main/java/com/example/unipool/ui/profile/ProfileFragment.java
+    #       app/src/main/res/layout/activity_main.xml
+    #       app/src/main/res/layout/fragment_home.xml
+    #       app/src/main/res/navigation/mobile_navigation.xml
+    #       app/src/main/res/values/strings.xml
+    #       app/src/main/res/values/themes.xml
+
+[33mcommit cb19657e625dfaed0c73760c92961e6e5e5fde9f[m[33m ([m[1;31morigin/Merging[m[33m, [m[1;32mMerging[m[33m)[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 06:16:28 2023 +0800
+
+    Update changes
+
+[33mcommit 5c2f48b480c13d185891ada746d18394b8293f2b[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 10 04:45:03 2023 +0800
+
+    Added profile
+
+[33mcommit 5073a078d1096279893955eb5c8409cb7db30059[m[33m ([m[1;31morigin/izzul[m[33m, [m[1;32mizzul[m[33m)[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 04:39:13 2023 +0800
+
+    -remove unused files
+    -bug left
+    *request*
+    -> 2nd cv muncul balik lepas delete
+    *offer*
+    -> 1st and 2nd cv muncul balik lepas delete
+
+[33mcommit e03ce1fdfca8e754cf6b872cd351cb84749c2914[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 04:20:46 2023 +0800
+
+    -add rate button for for manage
+    -bug left
+    *request*
+    -> 2nd cv muncul balik lepas delete
+    *offer*
+    -> 1st and 2nd cv muncul balik lepas delete
+
+[33mcommit 00fb133c1b067a8b8ffe607da38089f8495bc759[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 02:14:53 2023 +0800
+
+    bug left
+    *request*
+    -2nd cv muncul balik lepas delete
+    *offer*
+    -1st and 2nd cv muncul balik lepas delete
+
+[33mcommit 76690acddaeb52f984b83f78db34e20a0a55af83[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 01:52:22 2023 +0800
+
+    fixed bug terbalik data
+
+[33mcommit e8f1036cb4d96f6559f16a14338759c14a230ba7[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 01:43:42 2023 +0800
+
+    bug terbalik binding
+
+[33mcommit 08b8a91585cc5ee4513612c7b204ff1fc4e6be8f[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 01:13:21 2023 +0800
+
+    latest (delete)
+
+[33mcommit d7fff844e341cbec0e62e9ced04cee7252043d21[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 00:53:53 2023 +0800
+
+    latest (delete)
+
+[33mcommit 01d3fee4576633beb9d87c2a6531f0936f473e00[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 00:18:30 2023 +0800
+
+    latest (delete)
+
+[33mcommit 3cdc489593c2ca5ae4ce1622e239a1ff23a1aace[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Tue Jan 10 00:07:27 2023 +0800
+
+    latest (delete)
+
+[33mcommit 715e4750d901c8de639c0857040e85cd71abe98f[m
+Merge: 84a7511 1da51cc
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Mon Jan 9 21:31:48 2023 +0800
+
+    Merge branch 'Communication' of https://github.com/UniPool-WIA2006/UniPool into Communication
+
+[33mcommit 84a7511b39e9a7bd2dfb81ea6850dc91d23fd479[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Mon Jan 9 21:30:11 2023 +0800
+
+    add chat not complete
+
+[33mcommit 1da51cc003eb0bf12d28cd86f31ef6491930f6b8[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 03:45:29 2023 +0800
+
+    2 feedback layout
+
+[33mcommit f08a6f02ad5c8f574fa3b452e19f5ff30b134cb5[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 03:29:04 2023 +0800
+
+    2 fragment
+
+[33mcommit ee18d5aa9418241f26891585c7be8b7f34ef7b83[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 02:18:16 2023 +0800
+
+    4 activity of profile
+
+[33mcommit 2bab97c72a73233da86b3a1369fcbfa3864bfacc[m
+Author: jianqi02 <jianqi02@gmail.com>
+Date:   Mon Jan 9 01:54:31 2023 +0800
+
+    new drawables
+
+[33mcommit e02e60cadbf3bef51e449bfd5eca06b26dcb7eee[m
+Merge: d4bd72b b4aef2f
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:40:52 2023 +0800
+
+    Merge remote-tracking branch 'origin/izzul' into izzul
+
+[33mcommit d4bd72b420ded72c9b4dcf1a9c3f086826d59af3[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:39:46 2023 +0800
+
+    terpaling latest
+
+[33mcommit b4aef2f86febf630d91ec7001ffc489a8e0f243d[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:24:41 2023 +0800
+
+    fragment change to activity
+
+[33mcommit 194ede33f0441a2467655f8c7055b1cfe9502540[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:18:43 2023 +0800
+
+    fragment change to activity
+
+[33mcommit fb00a13c4af61ee71ade906eefff3299857ec323[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:15:21 2023 +0800
+
+    latest update
+
+[33mcommit 739a69cd3f9fd7eb525a28b69d29c6758fbb3735[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 9 01:10:57 2023 +0800
+
+    fragment change to activity
+
+[33mcommit dbe5f4e28ee138055b6e64a8692d74e370210f13[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Mon Jan 9 01:07:10 2023 +0800
+
+    Add login
+
+[33mcommit d1d6dc84728e5b332af9cecc1ef56eefab3bdb3d[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Sun Jan 8 04:36:15 2023 +0800
+
+    Add login
+
+[33mcommit 81535d6a53c60816104f1da4d260d86c1cea6fba[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Fri Jan 6 03:26:35 2023 +0800
+
+    linked shinee's login. Will change cause tis not functional
+    
+    my god
+
+[33mcommit d12d62514308559790f463ddee6aee991ffcb3a6[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Wed Jan 4 10:44:43 2023 +0800
+
+    fragment change to activity
+
+[33mcommit 2cce9937027cdecc3c6abc867fa00cfcce04a333[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Tue Jan 3 14:33:42 2023 +0800
+
+    Added Chat feature (not users yet)
+
+[33mcommit 39ceabd92002c2c947a6b12bb7ba46111c891638[m
+Author: Muhamad Izzul Izzani <izzulizzani2002@gmail.com>
+Date:   Mon Jan 2 19:18:33 2023 +0800
+
+    home
+
+[33mcommit c383f55fd30f8219899de960b7feaac69d82e460[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Fri Dec 30 02:16:14 2022 +0800
+
+    Add bottom navigation bar
+
+[33mcommit 545cff8d720c4810f9077c55a48e4d28ed9fbf93[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Fri Dec 9 03:37:27 2022 +0800
+
+    Sync to Android Studio
+
+[33mcommit 78c762864752f4e6038ac0cb0b313a384e576cc4[m
+Author: Marvin Chin Yi Kai <92499905+MarCYK@users.noreply.github.com>
+Date:   Fri Dec 9 03:32:58 2022 +0800
+
+    Update README.md
+
+[33mcommit 5fade14f049a5b24406e0d7143ec961753d5bbca[m
+Author: Marvin Chin Yi Kai <u2000490@siswa.um.edu.my>
+Date:   Fri Dec 9 03:30:10 2022 +0800
+
+    Initial commit
