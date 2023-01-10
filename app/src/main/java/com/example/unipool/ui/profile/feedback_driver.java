@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
 import com.example.unipool.R;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class feedback_driver extends AppCompatActivity {
     private DatabaseHandler dbHandler;
+    private String username = "Test2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,10 @@ public class feedback_driver extends AppCompatActivity {
         btn_rate2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = getIntent().getExtras();
-                String username = bundle.getString("username");
+//                Bundle bundle = getIntent().getExtras();
+//                String username = bundle.getString("username");
                 ArrayList<String> arr = dbHandler.searchUserInfo(username);
-                int current_trust_point = Integer.valueOf(arr.get(14));
+                int current_trust_point = Integer.valueOf(arr.get(13));
                 float rating = ratingBar.getRating();
                 if(rating==5.0){
                     if((current_trust_point+3>100)==false){
@@ -67,7 +69,8 @@ public class feedback_driver extends AppCompatActivity {
                     }
                 }
                 dbHandler.UpdateTrustPoint(username,current_trust_point);
-                //make an intent here.
+                Toast.makeText(feedback_driver.this, "review submitted", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

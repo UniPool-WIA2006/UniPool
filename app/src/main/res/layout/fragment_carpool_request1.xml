@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".carpoolOffer1"
+    android:layout_marginTop="60dp"
+    tools:context=".ui.manage.carpoolOffer1"
     android:orientation="vertical">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="100dp"
@@ -145,13 +146,15 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="3.5dp"/>
     </LinearLayout>
+
     <Button
+        android:id="@+id/btnRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate"
-        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:paddingHorizontal="70dp"
         android:paddingVertical="15dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:text="Rate"
+        android:textSize="25dp" />
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.unipool;
+package com.example.unipool.ui.manage;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

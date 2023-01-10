@@ -11,10 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
-import com.example.unipool.MainActivity;
 import com.example.unipool.R;
-
-import java.util.ArrayList;
 
 public class register_as_a_driver extends AppCompatActivity {
 

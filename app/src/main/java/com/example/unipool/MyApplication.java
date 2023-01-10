@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.unipool.ui.chat.ChatFragment;
 import com.example.unipool.ui.login.RegisterActivity;
 
 public class MyApplication extends AppCompatActivity {

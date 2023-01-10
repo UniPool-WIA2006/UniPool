@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.unipool.DatabaseHandler;
 import com.example.unipool.MainActivity;
-import com.example.unipool.MyApplication;
 import com.example.unipool.R;
 
 public class RegisterActivity extends AppCompatActivity {
