@@ -120,6 +120,7 @@
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
+            android:id="@+id/carpoolOffer2TP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Trust Point: 85/100"

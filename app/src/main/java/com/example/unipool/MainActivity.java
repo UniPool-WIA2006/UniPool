@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String phone = arr.get(6);
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                if(phone.equals(null))
+                if(phone.equals(null) || phone.equals("") || phone == null)
                     intent.setData(Uri.parse("tel:999"));
                 else
                     intent.setData(Uri.parse("tel:"+phone));

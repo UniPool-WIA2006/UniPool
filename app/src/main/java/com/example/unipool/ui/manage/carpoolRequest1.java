@@ -35,6 +35,7 @@ public class carpoolRequest1 extends Fragment {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.carpoolRequest1TP.setText("Trust Point: 88/100");
                 Intent intent = new Intent(getActivity(), feedback_passenger.class);
                 startActivity(intent);
             }
