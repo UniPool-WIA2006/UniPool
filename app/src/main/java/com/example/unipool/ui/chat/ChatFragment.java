@@ -71,10 +71,7 @@ public class ChatFragment extends Fragment {
         String token = client.devToken(user.getId());
 
         client.connectUser(user, token).enqueue(result -> {
-            if(result.isSuccess()) {
-                Toast.makeText(getActivity(), "Success Connecting", Toast.LENGTH_SHORT).show();
-                Log.d( "ChatFragment", "Success Connecting");
-            } else {
+            if(!result.isSuccess()) {
                 Toast.makeText(getActivity(), "Failed to Connect", Toast.LENGTH_SHORT).show();
                 Log.d( "ChatFragment", result.error().getMessage());
             }

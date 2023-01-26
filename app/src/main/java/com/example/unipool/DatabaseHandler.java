@@ -223,6 +223,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return arr;
     }
 
+    // testing
+    public Cursor getdata()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor  = DB.rawQuery("Select * from " + TABLE_NAME1, null);
+        return cursor;
+    }
+
     public ArrayList<String> searchUserProfilePicture(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from " + TABLE_NAME2 + " where " + USERNAME + " = ?", new String[]{username});

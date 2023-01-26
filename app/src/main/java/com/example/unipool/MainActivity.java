@@ -1,5 +1,6 @@
 package com.example.unipool;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,25 +8,23 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.unipool.ui.chat.ChatFragment;
+import com.example.unipool.databinding.ActivityMainBinding;
+import com.example.unipool.ui.notification.NotificationList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.unipool.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 import io.getstream.chat.android.client.ChatClient;
 import io.getstream.chat.android.client.logger.ChatLogLevel;
-import io.getstream.chat.android.client.models.User;
 import io.getstream.chat.android.offline.plugin.configuration.Config;
 import io.getstream.chat.android.offline.model.message.attachments.UploadAttachmentsNetworkType;
 import io.getstream.chat.android.offline.plugin.factory.StreamOfflinePluginFactory;
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Notification.class);
+                Intent intent = new Intent(MainActivity.this, NotificationList.class);
                 startActivity(intent);
             }
         });
