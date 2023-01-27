@@ -8,7 +8,7 @@ public class ModelClass {
     private String rvLocation;
     private String rvDestination;
 
-    ModelClass(int rvPicture, int rvGenderIcon, String rvName, String rvNumber, String rvFees, String rvLocation, String rvDestination) {
+    public ModelClass(int rvPicture, int rvGenderIcon, String rvName, String rvNumber, String rvFees, String rvLocation, String rvDestination) {
         this.rvPicture = rvPicture;
         this.rvGenderIcon = rvGenderIcon;
         this.rvName = rvName;

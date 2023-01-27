@@ -13,13 +13,26 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.unipool.Adapter;
+import com.example.unipool.ModelClass;
 import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentManageBinding;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ManageFragment extends Fragment {
+
+    RecyclerView recyclerView;
+    LinearLayoutManager layoutManager;
+    List<ModelClass> rvList;
+    Adapter adapter;
+
 
     private FragmentManageBinding binding;
 
@@ -37,28 +50,47 @@ public class ManageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView tvCarpoolOffer = binding.tvCarpoolOffer;
-        CardView cvOffer1 = binding.cvCarpoolOffer1;
-        CardView cvOffer2 = binding.cvCarpoolOffer2;
-        tvCarpoolOffer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_manageCarpoolRequest);
-            }
-        });
-        cvOffer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_carpoolOffer1);
-            }
-        });
-        cvOffer2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_carpoolOffer2);
-            }
-        });
+        initData();
+        initRecyclerView();
+
+//        TextView tvCarpoolOffer = binding.tvCarpoolOffer;
+//        CardView cvOffer1 = binding.cvCarpoolOffer1;
+//        CardView cvOffer2 = binding.cvCarpoolOffer2;
+//        tvCarpoolOffer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_manageCarpoolRequest);
+//            }
+//        });
+//        cvOffer1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_carpoolOffer1);
+//            }
+//        });
+//        cvOffer2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_carpoolOffer2);
+//            }
+//        });
     }
+
+    private void initData() {
+        rvList = new ArrayList<>();
+        rvList.add(new ModelClass(R.drawable.man_1, R.drawable.ic_baseline_male_24, "Jared", "012-3456789", "RM3.00", "KK8, UM", "DTC, UM"));
+        rvList.add(new ModelClass(R.drawable.woman_1, R.drawable.ic_baseline_female_24, "Lili", "014-73817293", "Free", "FSKTM, UM", "KK12, UM"));
+    }
+    private void initRecyclerView() {
+        recyclerView = binding.manageRV;
+        layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new Adapter(rvList);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void onDestroyView() {
