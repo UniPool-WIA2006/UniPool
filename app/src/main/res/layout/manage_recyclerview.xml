@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCarpoolOffer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/rcPicture"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:src="@drawable/woman_1" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/rcGenderIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_female_24"/>
+                        <TextView
+                            android:id="@+id/rcName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Celine"
+                            android:textSize="22dp"
+                            android:gravity="bottom"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_local_phone_24"
+                            android:layout_gravity="bottom"/>
+                        <TextView
+                            android:id="@+id/rcNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="012-82731023"
+                            android:textSize="22dp"
+                            android:gravity="bottom"
+                            android:layout_marginRight="15dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_price_check_24"
+                            android:layout_gravity="bottom"/>
+                        <TextView
+                            android:id="@+id/rcFees"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Free"
+                            android:textSize="22dp"
+                            android:gravity="bottom"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_emoji_people_24" />
+                <TextView
+                    android:id="@+id/rcLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PJ Seksyen 14, Kuala Lumpur"
+                    android:textSize="20dp">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_add_location_24" />
+                <TextView
+                    android:id="@+id/rcDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fakulti Pendidikan, UM"
+                    android:textSize="20dp">
+
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
