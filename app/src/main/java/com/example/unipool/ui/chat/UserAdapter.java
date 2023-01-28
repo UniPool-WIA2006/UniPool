@@ -3,25 +3,26 @@ package com.example.unipool.ui.chat;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.unipool.R;
 import com.example.unipool.databinding.UserRowLayoutBinding;
 import io.getstream.chat.android.client.ChatClient;
 import io.getstream.chat.android.client.channel.ChannelClient;
-import io.getstream.chat.android.client.models.Channel;
 import io.getstream.chat.android.client.models.User;
+import io.getstream.chat.android.ui.avatar.AvatarView;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -32,13 +33,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     UserRowLayoutBinding binding;
     private Context context;
-    private List<User> userList = Collections.<User>emptyList();
+    private List<User> userList;
     private ChatClient client = ChatClient.instance();
-    // i3 & create constructor also
-
-    public UserAdapter() {
-
-    }
+    private View v;
 
     public UserAdapter(Context context, List<User> userList) {
         this.context = context;
@@ -48,8 +45,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        binding = UserRowLayoutBinding.inflate(LayoutInflater.from(context),parent,false);
-        MyViewHolder holder = new MyViewHolder(binding);
+        v = LayoutInflater.from(context).inflate(R.layout.user_row_layout, parent, false);
+        MyViewHolder holder = new MyViewHolder(v);
         return holder;
     }
 
@@ -57,10 +54,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User currentUser = userList.get(position);
 
-        holder.binding.avatarImageView.setUserData(currentUser);
-        holder.binding.usernameTextView.setText(currentUser.getId());
-        holder.binding.lastActiveTextView.setText(convertDate(currentUser.getLastActive().getTime()));
-        holder.binding.rootLayout.setOnClickListener(view -> {
+        holder.ImageView.setUserData(currentUser);
+        holder.username.setText(currentUser.getId());
+//        holder.binding.lastActiveTextView.setText(convertDate(currentUser.getLastActive().getTime()));
+        holder.rootLayout.setOnClickListener(view -> {
             createNewChannel(currentUser.getId(), holder);
         });
     }
@@ -87,7 +84,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     private void navigateToChatFragment(MyViewHolder holder, String cid) {
         Bundle bundle = new Bundle();
         bundle.putString("cid", cid);
-        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_userFragment_to_navigation_chat, bundle);
+        Navigation.findNavController(v).navigate(R.id.action_userFragment_to_navigation_chat, bundle);
     }
 
     @Override
@@ -96,15 +93,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     }
 
     public void setData(List<User> newList) {
-        this.userList = newList;
-        notifyDataSetChanged();
+        if(newList != null) {
+            this.userList = newList;
+        } else {
+            this.userList.add(client.getCurrentUser());
+        }
+//        notifyDataSetChanged();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        UserRowLayoutBinding binding;
-        public MyViewHolder(@NonNull UserRowLayoutBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+        TextView username, lastOnline;
+        ConstraintLayout rootLayout;
+        AvatarView ImageView;
+        public MyViewHolder(@NonNull View binding) {
+            super(binding);
+            ImageView = binding.findViewById(R.id.avatar_imageView);
+            username = binding.findViewById(R.id.username_textView);
+            lastOnline = binding.findViewById(R.id.lastActive_textView);
         }
     }
 

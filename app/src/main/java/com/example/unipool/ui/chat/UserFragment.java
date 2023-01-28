@@ -33,7 +33,7 @@ public class UserFragment extends Fragment {
 
     private FragmentUserBinding binding;
     private ChatClient client = ChatClient.instance();
-    private UserAdapter adapter = new UserAdapter();
+    private UserAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +67,7 @@ public class UserFragment extends Fragment {
     }
 
     private void queryAllUsers() {
-        FilterObject filter = Filters.autocomplete("id", client.getCurrentUser().getId());
+        FilterObject filter = Filters.ne("id", client.getCurrentUser().getId());
         int offset = 0;
         int limit = 10;
         QueryUsersRequest request = new QueryUsersRequest(filter, offset, limit);
