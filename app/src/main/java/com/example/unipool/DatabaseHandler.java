@@ -46,12 +46,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String PROFILE_IMAGE = "imageTEXT";
 
     //Column name for TABLE 3 "Manage"
+    private static final String ID = "id";
     private static final String LOCATION_FROM = "location_from";
     private static final String LOCATION_TO = "location_to";
     private static final String FEE = "fee";
     private static final String DESC = "description";
     private static final String TYPE = "type";
     private static final String MANAGE_STATUS = "manage_status";
+    private static final String UserAccept = "user_accept";
 
     // creating a constructor for our database handler.
     public DatabaseHandler(Context context) {
@@ -86,7 +88,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + PROFILE_IMAGE + " TEXT)";
 
         String query3 = "CREATE TABLE " + TABLE_NAME3 + " ("
-                + USERNAME + " TEXT PRIMARY KEY,"
+                + USERNAME + " TEXT,"
                 + CONTACT_NO + " TEXT,"
                 + LOCATION_FROM + " TEXT,"
                 + LOCATION_TO + " TEXT,"
@@ -94,8 +96,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + DESC + " TEXT,"
                 + TRUST_POINT + " INT,"
                 + TYPE + " TEXT,"
-                + MANAGE_STATUS + " BOOLEAN)";
-
+                + MANAGE_STATUS + " TEXT,"
+                + UserAccept + "TEXT,"
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT)";
+        //Type = request/offer
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -159,8 +163,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void DeleteAccount(String username){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        db.delete(TABLE_NAME1,USERNAME + " ='" + username + "'", null);
-        db.delete(TABLE_NAME2,USERNAME + " ='" + username + "'", null);
+        db.delete(TABLE_NAME1,USERNAME + " = ?", new String[]{username});
+        db.delete(TABLE_NAME2,USERNAME + " = ?", new String[]{username});
     }
 
     //Update image
@@ -216,6 +220,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(TRUST_POINT, trust_point);
         db.update(TABLE_NAME1, values, USERNAME + " = ?", new String[]{username});
+        db.update(TABLE_NAME3, values, USERNAME + " = ?", new String[]{username});
     }
 
     @Override
@@ -254,7 +259,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return arr;
     }
 
-    public void AddCarpool(String username,String phone_no,String location_from, String location_to, String fee, String desc, int trust_point, String type, boolean manage_status){
+    // Add Carpool Offer/Request
+    public void AddCarpool(String username,String phone_no,String location_from, String location_to, String fee, String desc, int trust_point, String type){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(USERNAME, username);
@@ -265,7 +271,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(DESC, desc);
         values.put(TRUST_POINT, trust_point);
         values.put(TYPE, type);
-        values.put(MANAGE_STATUS, manage_status);
+        values.put(MANAGE_STATUS, "false");
+        values.put(UserAccept, "");
         db.insert(TABLE_NAME3, null, values);
         db.close();
     }
@@ -286,6 +293,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 arr.add(cursor.getString(6)); //trust point
                 arr.add(cursor.getString(7)); //type
                 arr.add(cursor.getString(8)); //manage status
+                arr.add(cursor.getString(9)); //user accept
+                arr.add(Integer.toString(cursor.getInt(10))); //id
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -308,41 +317,63 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 arr.add(cursor.getString(6)); //trust point
                 arr.add(cursor.getString(7)); //type
                 arr.add(cursor.getString(8)); //manage status
+                arr.add(cursor.getString(9)); //user accept
+                arr.add(Integer.toString(cursor.getInt(10))); //id
             } while (cursor.moveToNext());
         }
         cursor.close();
         return arr;
     }
 
-    //display all data by its current manage status. ( Except for the current user's carpooling )
-    public ArrayList<String> searchCarpoolingByStatus(String username, boolean manage_status) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + manage_status + "' AND name!='" + username + "'", null);
-        ArrayList<String> arr = new ArrayList<>();
-        if (cursor.moveToFirst()) {
-            do {
-                arr.add(cursor.getString(0)); //username
-                arr.add(cursor.getString(1)); //phone no
-                arr.add(cursor.getString(2)); //location from
-                arr.add(cursor.getString(3)); //location to
-                arr.add(cursor.getString(4)); //fee
-                arr.add(cursor.getString(5)); //description
-                arr.add(cursor.getString(6)); //trust point
-                arr.add(cursor.getString(7)); //type
-                arr.add(cursor.getString(8)); //manage status
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return arr;
+    //second method to searchByType
+//    public Cursor searchCarpoolingByType(String username, String type)
+//    {
+//        SQLiteDatabase DB = this.getWritableDatabase();
+//        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + type + "' AND name='" + username + "'", null);
+//        return cursor;
+//    }
+
+    // Update Notification and add who accepted the offer/request
+    // Boolean True = accepted offer/request
+    public void UpdateManageStatus(String username, String userAccept){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(MANAGE_STATUS, true);
+        values.put(UserAccept, userAccept);
+        db.update(TABLE_NAME3, values, USERNAME + " = ?", new String[]{username});
     }
 
-    // testing
-    public Cursor getdata()
+    //display all data by its current manage status. ( Only if related to the current user's carpooling offer/request)
+    //to display notification
+    public Cursor searchCarpoolingByStatus(String username, String manage_status)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor  = DB.rawQuery("Select * from " + TABLE_NAME1, null);
+        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + manage_status + "' AND name='" + username + "'", null);
         return cursor;
     }
+
+    //second method to searchByStatus
+//    public ArrayList<String> searchCarpoolingByStatus(String username, boolean manage_status) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + manage_status + "' AND name='" + username + "'", null);
+//        ArrayList<String> arr = new ArrayList<>();
+//        if (cursor.moveToFirst()) {
+//            do {
+//                arr.add(cursor.getString(0)); //username
+//                arr.add(cursor.getString(1)); //phone no
+//                arr.add(cursor.getString(2)); //location from
+//                arr.add(cursor.getString(3)); //location to
+//                arr.add(cursor.getString(4)); //fee
+//                arr.add(cursor.getString(5)); //description
+//                arr.add(cursor.getString(6)); //trust point
+//                arr.add(cursor.getString(7)); //type
+//                arr.add(cursor.getString(8)); //manage status
+//                arr.add(cursor.getString(9)); //user accept
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        return arr;
+//    }
 
     public ArrayList<String> searchUserProfilePicture(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -361,6 +392,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //For user registration and login
     public Boolean insertData(String username, String password, String email, String contact){
         SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERNAME, username);
+        //Default picture
+        contentValues.put(PROFILE_IMAGE, "file:///storage/emulated/0/Android/data/com.example.unipool/files/DCIM/IMG_20230109_203633960.jpg");
+        MyDB.insert(TABLE_NAME2, null, contentValues);
+
+        ContentValues table3 = new ContentValues();
+        table3.put(USERNAME, username);
+        table3.put(TRUST_POINT, 100);
+        MyDB.insert(TABLE_NAME3, null, table3);
+
         ContentValues values= new ContentValues();
         values.put(USERNAME, username);
         values.put(BIO, "This is a bio.");
@@ -377,12 +419,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //        values.put(PLATE, "plate_no");
 //        values.put(LICENSE_EXP, "license_exp");
         values.put(TRUST_POINT, 100);
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(USERNAME, username);
-        //Default picture
-        contentValues.put(PROFILE_IMAGE, "file:///storage/emulated/0/Android/data/com.example.unipool/files/DCIM/IMG_20230109_203633960.jpg");
-        MyDB.insert(TABLE_NAME2, null, contentValues);
 //        contentValues.put(USERNAME, username);
 //        contentValues.put(PASSWORD, password);
 //        contentValues.put(EMAIL, email);

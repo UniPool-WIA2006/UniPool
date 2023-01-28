@@ -15,13 +15,19 @@ import java.util.ArrayList;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList name_id, email_id, age_id;
+    private ArrayList name_id, type_id, date_id;
+//
+//    if(cursor.getString(7).equals("request")) {
+//        description.add("has accepted your request!");
+//    } else {
+//        description.add("has accepted your offer!");
+//    }
 
-    public NotificationAdapter(Context context, ArrayList name_id, ArrayList email_id, ArrayList age_id) {
+    public NotificationAdapter(Context context, ArrayList name_id, ArrayList type_id, ArrayList date_id) {
         this.context = context;
         this.name_id = name_id;
-        this.email_id = email_id;
-        this.age_id = age_id;
+        this.type_id = type_id;
+        this.date_id = date_id;
     }
 
     @NonNull
@@ -34,8 +40,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name_id.setText(String.valueOf(name_id.get(position)));
-        holder.email_id.setText(String.valueOf(email_id.get(position)));
-        holder.age_id.setText(String.valueOf(age_id.get(position)));
+        holder.type_id.setText(String.valueOf(type_id.get(position)));
+        holder.date_id.setText(String.valueOf(date_id.get(position)));
     }
 
     @Override
@@ -44,12 +50,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name_id, email_id, age_id;
+        TextView name_id, type_id, date_id;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name_id = itemView.findViewById(R.id.textname);
-            email_id = itemView.findViewById(R.id.textemail);
-            age_id = itemView.findViewById(R.id.textage);
+            type_id = itemView.findViewById(R.id.textStatus);
+            date_id = itemView.findViewById(R.id.textDate);
         }
     }
 }

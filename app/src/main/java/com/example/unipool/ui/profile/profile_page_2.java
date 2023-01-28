@@ -21,6 +21,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import java.util.ArrayList;
 
+// Not used, as backup only
 public class profile_page_2 extends Fragment {
 
     private Button Btn_EditProfile;
