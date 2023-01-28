@@ -30,11 +30,7 @@ public class manageCarpoolRequest extends Fragment implements ManageInterface{
 
     private FragmentManageCarpoolRequestBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        ManageViewModel homeViewModel =
-                new ViewModelProvider(this).get(ManageViewModel.class);
-
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentManageCarpoolRequestBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         return root;

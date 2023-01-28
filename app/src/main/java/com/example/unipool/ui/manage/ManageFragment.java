@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManageFragment extends Fragment implements ManageInterface {
-
     RecyclerView recyclerView;
     Adapter adapter;
     ArrayList<ModelClass> rvList;
@@ -36,7 +35,6 @@ public class ManageFragment extends Fragment implements ManageInterface {
     private FragmentManageBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ManageViewModel homeViewModel = new ViewModelProvider(this).get(ManageViewModel.class);
         binding = FragmentManageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         return root;

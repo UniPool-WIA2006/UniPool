@@ -41,7 +41,6 @@ public class myRequestDetails extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button editDetailsBtn = binding.editRequestBtn;
-
         editDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
