@@ -23,11 +23,16 @@ import com.example.unipool.ui.home.HomeViewModel;
 import java.util.ArrayList;
 
 
-public class myOffer extends Fragment {
+public class myOffer extends Fragment implements HomeAdapter.buttonClickListener{
 
     RecyclerView recyclerView;
     HomeAdapter adapter;
     ArrayList<HomeData> rvHomeList;
+
+    private Button createOfferBtn;
+    private Button deleteOfferBtn;
+    private CardView offerCV;
+
     private FragmentMyOfferBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,55 +49,32 @@ public class myOffer extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         rvHomeList = new ArrayList<>();
-        adapter = new HomeAdapter(getContext(), rvHomeList);
+        adapter = new HomeAdapter(getContext(), rvHomeList, this);
         recyclerView.setAdapter(adapter);
 
         //      insert data from database into arraylist
-        rvHomeList.add(new HomeData("Offer Location Baru", "Offer Destination Baru", " Offer RM3.79"));
-        rvHomeList.add(new HomeData("Offer Location Baru", "Offer Destination Baru", " Offer RM3.79"));
-        rvHomeList.add(new HomeData("Offer Location Baru", "Offer Destination Baru", " Offer RM3.79"));
+        rvHomeList.add(new HomeData("d", "dd", "ddd"));
+        rvHomeList.add(new HomeData("e", "ee", "eee"));
         adapter.notifyDataSetChanged();
 
-//        CardView cardViewOffer1 = binding.cardViewOffer1;
-//        Button createOfferBtn = binding.createNewOfferBtn;
-//        Button deleteOfferBtn = binding.deleteOfferBtn;
-//        Button deleteOfferBtn1 = binding.deleteOfferBtn1;
-
-//        cardViewOffer1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.action_myOffer_to_myOfferDetails);
-//            }
-//        });
-//
-//        deleteOfferBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sharedViewModel.setOfferDelete("delete");
-//                binding.cardViewOffer1.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        deleteOfferBtn1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sharedViewModel.setOfferDelete("delete");
-//                binding.cardViewOffer2.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        createOfferBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.action_myOffer_to_createOffer);
-//                binding.cardViewOffer2.setVisibility(View.VISIBLE);
-//            }
-//        });
+        createOfferBtn = binding.createNewOfferBtn;
+        createOfferBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myOffer_to_createOffer);
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+    @Override
+    public void onButtonClick(int position) {
+//      remove dari database, mockup data ni akan ada balik kalau refresh
+        rvHomeList.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }

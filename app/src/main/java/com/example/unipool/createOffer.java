@@ -47,10 +47,9 @@ public class createOffer extends Fragment {
         submitOfferBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel.setOfferLocation1(binding.createOfferLocationSave.getText().toString());
-                sharedViewModel.setOfferDestination1(binding.createOfferDestinationSave.getText().toString());
-                sharedViewModel.setOfferFees1(binding.createOfferFeesSave.getText().toString());
-                sharedViewModel.setOfferCreate("visible");
+//              save new offer location, destination, fees, and extra notes to database
+//              database will use the data to create new items for recyclerview
+
                 Navigation.findNavController(view).navigate(R.id.action_createOffer_to_navigation_home);
             }
         });

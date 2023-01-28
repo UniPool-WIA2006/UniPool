@@ -22,11 +22,16 @@ import com.example.unipool.ui.home.HomeViewModel;
 
 import java.util.ArrayList;
 
-public class myRequest extends Fragment {
+public class myRequest extends Fragment implements HomeAdapter.buttonClickListener{
 
     RecyclerView recyclerView;
     HomeAdapter adapter;
     ArrayList<HomeData> rvHomeList;
+
+    private Button createRequestBtn;
+    private Button deleteRequestBtn;
+    private CardView requestCV;
+
     private FragmentMyRequestBinding binding;
 
 
@@ -43,51 +48,22 @@ public class myRequest extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         rvHomeList = new ArrayList<>();
-        adapter = new HomeAdapter(getContext(), rvHomeList);
+        adapter = new HomeAdapter(getContext(), rvHomeList, this);
         recyclerView.setAdapter(adapter);
 
 //      insert data from database into arraylist
-        rvHomeList.add(new HomeData("Request Location Baru", "Request Destination Baru", "Request RM3.79"));
-        rvHomeList.add(new HomeData("Request Location Baru", "Request Destination Baru", "Request RM3.79"));
-        rvHomeList.add(new HomeData("Request Location Baru", "Request Destination Baru", "Request RM3.79"));
-
+        rvHomeList.add(new HomeData("a", "aa", "aaa"));
+        rvHomeList.add(new HomeData("b", "bb", "bbb"));
         adapter.notifyDataSetChanged();
 
-//        CardView cardViewRequest1 = binding.cardViewRequest1;
-//        Button createNewRequest = binding.createNewRequestBtn;
-//        Button deleteRequestBtn = binding.deleteRequestBtn;
-//        Button deleteRequestBtn1 = binding.deleteRequestBtn1;
+        createRequestBtn = binding.homeCreateBtn;
+        createRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_createRequest);
+            }
+        });
 
-//        cardViewRequest1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_myRequestDetails);
-//            }
-//        });
-//
-//        deleteRequestBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sharedViewModel.setRequestDelete("delete");
-//                binding.cardViewRequest1.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        deleteRequestBtn1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sharedViewModel.setRequestDelete1("delete");
-//                binding.cardViewRequest2.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        createNewRequest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_createRequest);
-//                binding.cardViewRequest2.setVisibility(View.VISIBLE);
-//            }
-//        });
         super.onViewCreated(view, savedInstanceState);
 
 
@@ -99,4 +75,10 @@ public class myRequest extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onButtonClick(int position) {
+//      kena tambah remove dari database, mockup data ni akan ada balik kalau refresh
+        rvHomeList.remove(position);
+        adapter.notifyItemRemoved(position);
+    }
 }

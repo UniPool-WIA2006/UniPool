@@ -46,10 +46,8 @@ public class createRequest extends Fragment {
         submitRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel.setRequestLocation1(binding.createLocationSave.getText().toString());
-                sharedViewModel.setRequestDestination1(binding.createDestinationSave.getText().toString());
-                sharedViewModel.setRequestFees1(binding.createFeesSave.getText().toString());
-                sharedViewModel.setRequestCreate("visible");
+//              save new request location, destination, fees, and extra notes to database
+//              database will use the data to create new items for recyclerview
 
                 Navigation.findNavController(view).navigate(R.id.action_createRequest_to_navigation_home);
             }
