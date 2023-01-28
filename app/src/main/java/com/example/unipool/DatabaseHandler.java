@@ -23,6 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // below variable is for our table name.
     private static final String TABLE_NAME1 = "UserProfile";
     private static final String TABLE_NAME2 = "ProfileImage";
+    private static final String TABLE_NAME3 = "Manage";
 
 
     //Column name for TABLE 1 "UserProfile"
@@ -43,6 +44,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Column name for TABLE 2 "ProfileImage"
     private static final String PROFILE_IMAGE = "imageTEXT";
+
+    //Column name for TABLE 3 "Manage"
+    private static final String LOCATION_FROM = "location_from";
+    private static final String LOCATION_TO = "location_to";
+    private static final String FEE = "fee";
+    private static final String DESC = "description";
+    private static final String TYPE = "type";
+    private static final String MANAGE_STATUS = "manage_status";
 
     // creating a constructor for our database handler.
     public DatabaseHandler(Context context) {
@@ -76,11 +85,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + USERNAME + " TEXT PRIMARY KEY,"
                 + PROFILE_IMAGE + " TEXT)";
 
+        String query3 = "CREATE TABLE " + TABLE_NAME3 + " ("
+                + USERNAME + " TEXT PRIMARY KEY,"
+                + CONTACT_NO + " TEXT,"
+                + LOCATION_FROM + " TEXT,"
+                + LOCATION_TO + " TEXT,"
+                + FEE + " TEXT,"
+                + DESC + " TEXT,"
+                + TRUST_POINT + " INT,"
+                + TYPE + " TEXT,"
+                + MANAGE_STATUS + " BOOLEAN)";
+
 
         // at last we are calling a exec sql
         // method to execute above sql query
         db.execSQL(query1);
         db.execSQL(query2);
+        db.execSQL(query3);
     }
 
     // this method is use to update user profile information to our sqlite database.
@@ -201,6 +222,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME3);
         onCreate(db);
     }
 
@@ -225,6 +248,88 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 arr.add(cursor.getString(11)); //plate_number
                 arr.add(cursor.getString(12)); //license_expiry_date
                 arr.add(cursor.getString(13)); //trust_point
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return arr;
+    }
+
+    public void AddCarpool(String username,String phone_no,String location_from, String location_to, String fee, String desc, int trust_point, String type, boolean manage_status){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME, username);
+        values.put(CONTACT_NO, phone_no);
+        values.put(LOCATION_FROM, location_from);
+        values.put(LOCATION_TO, location_to);
+        values.put(FEE, fee);
+        values.put(DESC, desc);
+        values.put(TRUST_POINT, trust_point);
+        values.put(TYPE, type);
+        values.put(MANAGE_STATUS, manage_status);
+        db.insert(TABLE_NAME3, null, values);
+        db.close();
+    }
+
+    //display all data of same username and can filter further by the type wanted.
+    public ArrayList<String> displayMyCarpool(String username, String type) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE name='" + username + "' AND type='" + type, null);
+        ArrayList<String> arr = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                arr.add(cursor.getString(0)); //username
+                arr.add(cursor.getString(1)); //phone no
+                arr.add(cursor.getString(2)); //location from
+                arr.add(cursor.getString(3)); //location to
+                arr.add(cursor.getString(4)); //fee
+                arr.add(cursor.getString(5)); //description
+                arr.add(cursor.getString(6)); //trust point
+                arr.add(cursor.getString(7)); //type
+                arr.add(cursor.getString(8)); //manage status
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return arr;
+    }
+
+    //display all data by its type. ( Except for the current user's carpooling )
+    public ArrayList<String> searchCarpoolingByType(String username, String type) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name!='" + username + "'", null);
+        ArrayList<String> arr = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                arr.add(cursor.getString(0)); //username
+                arr.add(cursor.getString(1)); //phone no
+                arr.add(cursor.getString(2)); //location from
+                arr.add(cursor.getString(3)); //location to
+                arr.add(cursor.getString(4)); //fee
+                arr.add(cursor.getString(5)); //description
+                arr.add(cursor.getString(6)); //trust point
+                arr.add(cursor.getString(7)); //type
+                arr.add(cursor.getString(8)); //manage status
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return arr;
+    }
+
+    //display all data by its current manage status. ( Except for the current user's carpooling )
+    public ArrayList<String> searchCarpoolingByType(String username, boolean manage_status) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + manage_status + "' AND name!='" + username + "'", null);
+        ArrayList<String> arr = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                arr.add(cursor.getString(0)); //username
+                arr.add(cursor.getString(1)); //phone no
+                arr.add(cursor.getString(2)); //location from
+                arr.add(cursor.getString(3)); //location to
+                arr.add(cursor.getString(4)); //fee
+                arr.add(cursor.getString(5)); //description
+                arr.add(cursor.getString(6)); //trust point
+                arr.add(cursor.getString(7)); //type
+                arr.add(cursor.getString(8)); //manage status
             } while (cursor.moveToNext());
         }
         cursor.close();
