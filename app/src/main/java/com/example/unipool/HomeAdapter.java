@@ -13,21 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
+    private final HomeInterface homeInterface;
+
     Context context;
     ArrayList<HomeData> rvList;
     buttonClickListener buttonClickListener;
 
-    public HomeAdapter(Context context, ArrayList<HomeData> rvList, buttonClickListener buttonClickListener) {
+    public HomeAdapter(Context context, ArrayList<HomeData> rvList, buttonClickListener buttonClickListener, HomeInterface homeInterface) {
         this.context = context;
         this.rvList = rvList;
         this.buttonClickListener = buttonClickListener;
+        this.homeInterface = homeInterface;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_recyclerview, parent, false);
-        return new HomeAdapter.MyViewHolder(view, buttonClickListener);
+        return new HomeAdapter.MyViewHolder(view, buttonClickListener, homeInterface);
     }
 
     @Override
@@ -52,7 +55,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         private Button deleteBtn;
         buttonClickListener buttonClickListener;
 
-        public MyViewHolder(@NonNull View itemView, buttonClickListener buttonClickListener) {
+        public MyViewHolder(@NonNull View itemView, buttonClickListener buttonClickListener, HomeInterface homeInterface) {
             super(itemView);
 
             vhLocation = itemView.findViewById(R.id.homeLocation);
@@ -67,6 +70,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 @Override
                 public void onClick(View v) {
                     
+                }
+            });
+            itemView.findViewById(R.id.homeCardView).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (homeInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            homeInterface.onClickItem(position, itemView);
+                        }
+                    }
                 }
             });
         }

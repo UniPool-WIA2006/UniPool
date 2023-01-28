@@ -71,20 +71,6 @@ public class ManageFragment extends Fragment {
         });
     }
 
-//    private void initData() {
-//        rvList = new ArrayList<>();
-//        rvList.add(new ModelClass(R.drawable.man_1, R.drawable.ic_baseline_male_24, "Jared", "012-3456789", "RM3.00", "KK8, UM", "DTC, UM"));
-//        rvList.add(new ModelClass(R.drawable.woman_1, R.drawable.ic_baseline_female_24, "Lili", "014-73817293", "Free", "FSKTM, UM", "KK12, UM"));
-//    }
-//    private void initRecyclerView() {
-//        recyclerView = binding.manageRV;
-//        layoutManager = new LinearLayoutManager(getContext());
-//        layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        recyclerView.setLayoutManager(layoutManager);
-//        adapter = new Adapter(rvList);
-//        recyclerView.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
-//    }
 
 
     @Override

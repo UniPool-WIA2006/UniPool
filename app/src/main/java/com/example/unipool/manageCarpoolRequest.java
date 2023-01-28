@@ -67,21 +67,6 @@ public class manageCarpoolRequest extends Fragment {
         });
     }
 
-//    private void initData() {
-//        rvList = new ArrayList<>();
-//        rvList.add(new ModelClass(R.drawable.man_2, R.drawable.ic_baseline_male_24, "Marvin", "011-31829578", "RM7.00", "UM", "Terminal Bersepadu Selatan"));
-//        rvList.add(new ModelClass(R.drawable.woman_2, R.drawable.ic_baseline_female_24, "Linda", "014-73817293", "RM2.00", "KK1, UM", "UM Arena"));
-//    }
-//
-//    private void initRecyclerView() {
-//        recyclerView = binding.manageRV;
-//        layoutManager = new LinearLayoutManager(getContext());
-//        layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        recyclerView.setLayoutManager(layoutManager);
-//        adapter = new Adapter(rvList);
-//        recyclerView.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
-//    }
 
     @Override
     public void onDestroyView() {

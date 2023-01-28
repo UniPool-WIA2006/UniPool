@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -22,7 +23,7 @@ import com.example.unipool.ui.home.HomeViewModel;
 
 import java.util.ArrayList;
 
-public class myRequest extends Fragment implements HomeAdapter.buttonClickListener{
+public class myRequest extends Fragment implements HomeAdapter.buttonClickListener, HomeInterface{
 
     RecyclerView recyclerView;
     HomeAdapter adapter;
@@ -48,7 +49,7 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         rvHomeList = new ArrayList<>();
-        adapter = new HomeAdapter(getContext(), rvHomeList, this);
+        adapter = new HomeAdapter(getContext(), rvHomeList, this, this);
         recyclerView.setAdapter(adapter);
 
 //      insert data from database into arraylist
@@ -80,5 +81,10 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
 //      kena tambah remove dari database, mockup data ni akan ada balik kalau refresh
         rvHomeList.remove(position);
         adapter.notifyItemRemoved(position);
+    }
+
+    @Override
+    public void onClickItem(int position, View view) {
+        Navigation.findNavController(view).navigate(R.id.action_myRequest_to_myRequestDetails);
     }
 }
