@@ -8,6 +8,7 @@ public class ModelClass {
     private String rvLocation;
     private String rvDestination;
     private int rvRating;
+    private String rvExtraNotes;
 
     public ModelClass(int rvPicture, int rvGenderIcon, String rvName, String rvNumber, String rvFees, String rvLocation, String rvDestination) {
         this.rvPicture = rvPicture;
@@ -51,4 +52,7 @@ public class ModelClass {
         return rvRating;
     }
 
+    public String getRvExtraNotes() {
+        return rvExtraNotes;
+    }
 }
