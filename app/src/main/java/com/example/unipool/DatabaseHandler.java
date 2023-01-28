@@ -165,6 +165,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         db.delete(TABLE_NAME1,USERNAME + " = ?", new String[]{username});
         db.delete(TABLE_NAME2,USERNAME + " = ?", new String[]{username});
+        db.delete(TABLE_NAME3,USERNAME + " = ?", new String[]{username});
     }
 
     //Update image

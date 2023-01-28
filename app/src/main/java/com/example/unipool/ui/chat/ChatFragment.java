@@ -66,7 +66,6 @@ public class ChatFragment extends Fragment {
         // Authenticate and connect the user
         user.setId(username);
         user.setName(username);
-//        user.setImage("https://bit.ly/2TIt8NR");
 
         String token = client.devToken(user.getId());
 
