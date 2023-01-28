@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         // Setting up Chat with offline function
-        Config config = new Cocnfig(true, true, true, UploadAttachmentsNetworkType.NOT_ROAMING);
+        Config config = new Config(true, true, true, UploadAttachmentsNetworkType.NOT_ROAMING);
         StreamOfflinePluginFactory offlinePluginFactory = new StreamOfflinePluginFactory(config, this);
         ChatClient client = new ChatClient.Builder(getString(R.string.api_key), this).logLevel(ChatLogLevel.ALL).withPlugin(offlinePluginFactory).build();
 
