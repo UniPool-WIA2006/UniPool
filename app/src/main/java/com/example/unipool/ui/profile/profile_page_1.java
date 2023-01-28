@@ -1,8 +1,10 @@
 package com.example.unipool.ui.profile;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -103,6 +105,7 @@ public class profile_page_1 extends Fragment {
             }
         });
 
+
         //Go to Register As Driver Page
         String driver = arr.get(8);
         Btn_RegAsDriver = binding.BtnRegAsDriver;
@@ -138,7 +141,33 @@ public class profile_page_1 extends Fragment {
                 }
             });
         }
-
+        Button Btn_DeleteAccount = binding.btnDeleteAcc;
+        Btn_DeleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setCancelable(true);
+                builder.setTitle("Are you sure to DELETE ACCOUNT?");
+                builder.setMessage("The account CANNOT be recovered once you delete the account!");
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dbHandler.DeleteAccount(username);
+                                Toast.makeText(getActivity(), "Account has been deleted successfully.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         //Change Profile Picture
         profile_image = binding.profileImage;
