@@ -28,7 +28,7 @@ public class NotificationList extends AppCompatActivity {
     ArrayList<String> name, type, date;
     DatabaseHandler DB;
     NotificationAdapter adapter;
-    private String username; //current user
+    private String value; //current user
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,13 @@ public class NotificationList extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        MainActivity activity = new MainActivity();
-        username = activity.getUsername();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getString("user");
+            //The key argument here must match that used in the other activity
+        }
+        System.out.println(value); // for debugging
+
         displaydata();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,7 +62,7 @@ public class NotificationList extends AppCompatActivity {
 
     private void displaydata()
     {
-        Cursor cursor = DB.searchCarpoolingByStatus("Ming", "true");
+        Cursor cursor = DB.searchCarpoolingByStatus(value, "true");
         if(cursor.getCount()==0)
         {
             Toast.makeText(NotificationList.this, "No Notification Available", Toast.LENGTH_SHORT).show();
@@ -68,15 +73,15 @@ public class NotificationList extends AppCompatActivity {
             while(cursor.moveToNext())
             {
                 name.add(cursor.getString(9));
-                System.out.println(cursor.getString(7));
                 type.add(cursor.getString(7));
-            }
-            Date c = Calendar.getInstance().getTime();
-            System.out.println("Current time => " + c); //for debugging
+                System.out.println(type.size());
+                Date c = Calendar.getInstance().getTime();
+                System.out.println("Current time => " + c); //for debugging
 
-            SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm", Locale.getDefault());
-            String formattedDate = df.format(c);
-            date.add(formattedDate);
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm", Locale.getDefault());
+                String formattedDate = df.format(c);
+                date.add(formattedDate);
+            }
         }
     }
 }

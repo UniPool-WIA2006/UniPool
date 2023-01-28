@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String value = username;
                 Intent intent = new Intent(MainActivity.this, NotificationList.class);
+                intent.putExtra("user", value);
                 startActivity(intent);
             }
         });
