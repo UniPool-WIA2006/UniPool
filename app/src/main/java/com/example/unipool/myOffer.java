@@ -75,7 +75,7 @@ public class myOffer extends Fragment implements HomeAdapter.buttonClickListener
     }
     @Override
     public void onButtonClick(int position) {
-//      remove dari database, mockup data ni akan ada balik kalau refresh
+//      remove data dari database, mockup data ni akan ada balik kalau refresh
         rvHomeList.remove(position);
         adapter.notifyItemRemoved(position);
     }

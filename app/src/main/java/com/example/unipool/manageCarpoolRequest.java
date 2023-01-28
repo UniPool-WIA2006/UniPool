@@ -23,7 +23,7 @@ import com.example.unipool.ui.manage.ManageViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class manageCarpoolRequest extends Fragment {
+public class manageCarpoolRequest extends Fragment implements ManageInterface{
     RecyclerView recyclerView;
     Adapter adapter;
     ArrayList<ModelClass> rvList;
@@ -49,7 +49,7 @@ public class manageCarpoolRequest extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         rvList = new ArrayList<>();
-        adapter = new Adapter(getContext(), rvList);
+        adapter = new Adapter(getContext(), rvList, this);
         recyclerView.setAdapter(adapter);
 
 //      insert data from database into arrayList
@@ -72,5 +72,10 @@ public class manageCarpoolRequest extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onClickItem(int position, View view) {
+        Navigation.findNavController(view).navigate(R.id.action_manageCarpoolRequest_to_manageDetails);
     }
 }

@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".carpoolOffer1"
     android:orientation="vertical">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/woman_1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/man_1"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"/>
 
@@ -16,18 +15,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_female_24"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_male_24"
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Celine"
-            android:textSize="20dp"
+            android:text="Jared"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
 
@@ -35,18 +34,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_local_phone_24"
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="012-82731023"
-            android:textSize="20dp"
+            android:text="014-92810521"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
 
@@ -54,18 +53,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_emoji_people_24"
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PJ Seksyen 14, Kuala Lumpur"
-            android:textSize="20dp"
+            android:text="TBS, Kuala Lumpur"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
 
@@ -73,18 +72,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_add_location_24"
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fakulti Pendidikan, UM"
-            android:textSize="20dp"
+            android:text="International House, UM"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
 
@@ -92,18 +91,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_price_check_24"
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fees: Free"
-            android:textSize="20dp"
+            android:text="Fees: RM6.50"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
 
@@ -111,18 +110,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_thumbs_up_down_24"
             android:layout_marginHorizontal="15dp"
             android:layout_gravity="bottom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trust Point: 100/100"
-            android:textSize="20dp"
+            android:text="Trust Point: 95/100"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
 
@@ -130,28 +129,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="7dp">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_create_24"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="15dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Extra Note: If you are interested in daily carpool, please inform me."
-            android:textSize="20dp"
-            android:layout_marginTop="15dp"/>
+            android:text="Extra Note: I'm back from a trip, so there might be a few luggage."
+            android:textSize="17dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="3.5dp"/>
     </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate"
-        android:textSize="25dp"
-        android:paddingHorizontal="70dp"
+        android:text="Accept"
+        android:textSize="20dp"
+        android:paddingHorizontal="60dp"
         android:paddingVertical="15dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate"
+        android:textSize="20dp"
+        android:paddingHorizontal="60dp"
+        android:paddingVertical="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

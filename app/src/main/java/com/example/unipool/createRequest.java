@@ -19,22 +19,16 @@ import com.example.unipool.ui.home.HomeViewModel;
 
 
 public class createRequest extends Fragment {
-
-    private SharedViewModel sharedViewModel;
     private FragmentCreateRequestBinding binding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentCreateRequestBinding.inflate(getLayoutInflater());
         return binding.getRoot();
-
     }
 
     @Override
@@ -42,7 +36,6 @@ public class createRequest extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button submitRequestBtn = binding.submitRequestBtn;
-
         submitRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,5 +45,10 @@ public class createRequest extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_createRequest_to_navigation_home);
             }
         });
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unipool.Adapter;
+import com.example.unipool.ManageInterface;
 import com.example.unipool.ModelClass;
 import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentManageBinding;
@@ -26,7 +27,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManageFragment extends Fragment {
+public class ManageFragment extends Fragment implements ManageInterface {
 
     RecyclerView recyclerView;
     Adapter adapter;
@@ -50,7 +51,7 @@ public class ManageFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         rvList = new ArrayList<>();
-        adapter = new Adapter(getContext(), rvList);
+        adapter = new Adapter(getContext(), rvList, this);
         recyclerView.setAdapter(adapter);
 
 //      insert data from database into arrayList
@@ -58,9 +59,6 @@ public class ManageFragment extends Fragment {
         rvList.add(new ModelClass(R.drawable.woman_1, R.drawable.ic_baseline_female_24, "Lili", "014-73817293", "Free", "FSKTM, UM", "KK12, UM"));
 
         adapter.notifyDataSetChanged();
-
-//        initData();
-//        initRecyclerView();
 
         TextView tvCarpoolOffer = binding.tvCarpoolOffer;
         tvCarpoolOffer.setOnClickListener(new View.OnClickListener() {
@@ -77,5 +75,10 @@ public class ManageFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onClickItem(int position, View view) {
+        Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_manageDetails);
     }
 }
