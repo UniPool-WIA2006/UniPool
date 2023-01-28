@@ -25,9 +25,8 @@ import java.util.List;
 
 public class manageCarpoolRequest extends Fragment {
     RecyclerView recyclerView;
-    LinearLayoutManager layoutManager;
-    List<ModelClass> rvList;
     Adapter adapter;
+    ArrayList<ModelClass> rvList;
 
     private FragmentManageCarpoolRequestBinding binding;
 
@@ -44,8 +43,20 @@ public class manageCarpoolRequest extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initData();
-        initRecyclerView();
+
+        recyclerView = binding.manageRV;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        rvList = new ArrayList<>();
+        adapter = new Adapter(getContext(), rvList);
+        recyclerView.setAdapter(adapter);
+
+//      insert data from database into arrayList
+        rvList.add(new ModelClass(R.drawable.man_2, R.drawable.ic_baseline_male_24, "Marvin", "011-31829578", "RM7.00", "UM", "Terminal Bersepadu Selatan"));
+        rvList.add(new ModelClass(R.drawable.woman_2, R.drawable.ic_baseline_female_24, "Linda", "014-73817293", "RM2.00", "KK1, UM", "UM Arena"));
+
+        adapter.notifyDataSetChanged();
 
         TextView tvCarpoolRequest = binding.tvCarpoolRequest;
         tvCarpoolRequest.setOnClickListener(new View.OnClickListener() {
@@ -56,21 +67,21 @@ public class manageCarpoolRequest extends Fragment {
         });
     }
 
-    private void initData() {
-        rvList = new ArrayList<>();
-        rvList.add(new ModelClass(R.drawable.man_2, R.drawable.ic_baseline_male_24, "Marvin", "011-31829578", "RM7.00", "UM", "Terminal Bersepadu Selatan"));
-        rvList.add(new ModelClass(R.drawable.woman_2, R.drawable.ic_baseline_female_24, "Linda", "014-73817293", "RM2.00", "KK1, UM", "UM Arena"));
-    }
-
-    private void initRecyclerView() {
-        recyclerView = binding.manageRV;
-        layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new Adapter(rvList);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-    }
+//    private void initData() {
+//        rvList = new ArrayList<>();
+//        rvList.add(new ModelClass(R.drawable.man_2, R.drawable.ic_baseline_male_24, "Marvin", "011-31829578", "RM7.00", "UM", "Terminal Bersepadu Selatan"));
+//        rvList.add(new ModelClass(R.drawable.woman_2, R.drawable.ic_baseline_female_24, "Linda", "014-73817293", "RM2.00", "KK1, UM", "UM Arena"));
+//    }
+//
+//    private void initRecyclerView() {
+//        recyclerView = binding.manageRV;
+//        layoutManager = new LinearLayoutManager(getContext());
+//        layoutManager.setOrientation(RecyclerView.VERTICAL);
+//        recyclerView.setLayoutManager(layoutManager);
+//        adapter = new Adapter(rvList);
+//        recyclerView.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+//    }
 
     @Override
     public void onDestroyView() {

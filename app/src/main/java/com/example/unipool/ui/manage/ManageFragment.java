@@ -29,18 +29,13 @@ import java.util.List;
 public class ManageFragment extends Fragment {
 
     RecyclerView recyclerView;
-    LinearLayoutManager layoutManager;
-    List<ModelClass> rvList;
     Adapter adapter;
-
+    ArrayList<ModelClass> rvList;
 
     private FragmentManageBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        ManageViewModel homeViewModel =
-                new ViewModelProvider(this).get(ManageViewModel.class);
-
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ManageViewModel homeViewModel = new ViewModelProvider(this).get(ManageViewModel.class);
         binding = FragmentManageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         return root;
@@ -50,8 +45,22 @@ public class ManageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initData();
-        initRecyclerView();
+        recyclerView = binding.manageRV;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        rvList = new ArrayList<>();
+        adapter = new Adapter(getContext(), rvList);
+        recyclerView.setAdapter(adapter);
+
+//      insert data from database into arrayList
+        rvList.add(new ModelClass(R.drawable.man_1, R.drawable.ic_baseline_male_24, "Jared", "012-3456789", "RM3.00", "KK8, UM", "DTC, UM"));
+        rvList.add(new ModelClass(R.drawable.woman_1, R.drawable.ic_baseline_female_24, "Lili", "014-73817293", "Free", "FSKTM, UM", "KK12, UM"));
+
+        adapter.notifyDataSetChanged();
+
+//        initData();
+//        initRecyclerView();
 
         TextView tvCarpoolOffer = binding.tvCarpoolOffer;
         tvCarpoolOffer.setOnClickListener(new View.OnClickListener() {
@@ -62,20 +71,20 @@ public class ManageFragment extends Fragment {
         });
     }
 
-    private void initData() {
-        rvList = new ArrayList<>();
-        rvList.add(new ModelClass(R.drawable.man_1, R.drawable.ic_baseline_male_24, "Jared", "012-3456789", "RM3.00", "KK8, UM", "DTC, UM"));
-        rvList.add(new ModelClass(R.drawable.woman_1, R.drawable.ic_baseline_female_24, "Lili", "014-73817293", "Free", "FSKTM, UM", "KK12, UM"));
-    }
-    private void initRecyclerView() {
-        recyclerView = binding.manageRV;
-        layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new Adapter(rvList);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-    }
+//    private void initData() {
+//        rvList = new ArrayList<>();
+//        rvList.add(new ModelClass(R.drawable.man_1, R.drawable.ic_baseline_male_24, "Jared", "012-3456789", "RM3.00", "KK8, UM", "DTC, UM"));
+//        rvList.add(new ModelClass(R.drawable.woman_1, R.drawable.ic_baseline_female_24, "Lili", "014-73817293", "Free", "FSKTM, UM", "KK12, UM"));
+//    }
+//    private void initRecyclerView() {
+//        recyclerView = binding.manageRV;
+//        layoutManager = new LinearLayoutManager(getContext());
+//        layoutManager.setOrientation(RecyclerView.VERTICAL);
+//        recyclerView.setLayoutManager(layoutManager);
+//        adapter = new Adapter(rvList);
+//        recyclerView.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+//    }
 
 
     @Override

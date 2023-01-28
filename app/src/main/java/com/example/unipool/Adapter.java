@@ -1,5 +1,6 @@
 package com.example.unipool;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private List<ModelClass> rvList;
+    Context context;
+    ArrayList<ModelClass> rvList;
 
-    public Adapter(List<ModelClass> rvList) {
+    public Adapter(Context context, ArrayList<ModelClass> rvList) {
+        this.context = context;
         this.rvList = rvList;
     }
 
@@ -30,15 +34,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
-        int picture = rvList.get(position).getRvPicture();
-        int genderIcon = rvList.get(position).getRvGenderIcon();
-        String name = rvList.get(position).getRvName();
-        String number = rvList.get(position).getRvNumber();
-        String fees = rvList.get(position).getRvFees();
-        String location = rvList.get(position).getRvLocation();
-        String destination = rvList.get(position).getRvDestination();
+        ModelClass modelClass =rvList.get(position);
+        holder.vhPicture.setImageResource(modelClass.getRvPicture());
+        holder.vhGenderIcon.setImageResource(modelClass.getRvGenderIcon());
+        holder.vhName.setText(modelClass.getRvName());
+        holder.vhNumber.setText(modelClass.getRvNumber());
+        holder.vhFees.setText(modelClass.getRvFees());
+        holder.vhLocation.setText(modelClass.getRvLocation());
+        holder.vhDestination.setText(modelClass.getRvDestination());
 
-        holder.setData(picture, genderIcon, name, number, fees, location, destination);
+//        int picture = rvList.get(position).getRvPicture();
+//        int genderIcon = rvList.get(position).getRvGenderIcon();
+//        String name = rvList.get(position).getRvName();
+//        String number = rvList.get(position).getRvNumber();
+//        String fees = rvList.get(position).getRvFees();
+//        String location = rvList.get(position).getRvLocation();
+//        String destination = rvList.get(position).getRvDestination();
+//
+//        holder.setData(picture, genderIcon, name, number, fees, location, destination);
     }
 
     @Override
@@ -70,15 +83,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         }
 
-        public void setData(int picture, int genderIcon, String name, String number, String fees, String location, String destination) {
-            vhPicture.setImageResource(picture);
-            vhGenderIcon.setImageResource(genderIcon);
-            vhName.setText(name);
-            vhNumber.setText(number);
-            vhFees.setText(fees);
-            vhLocation.setText(location);
-            vhDestination.setText(destination);
-        }
+//        public void setData(int picture, int genderIcon, String name, String number, String fees, String location, String destination) {
+//            vhPicture.setImageResource(picture);
+//            vhGenderIcon.setImageResource(genderIcon);
+//            vhName.setText(name);
+//            vhNumber.setText(number);
+//            vhFees.setText(fees);
+//            vhLocation.setText(location);
+//            vhDestination.setText(destination);
+//        }
     }
 }
 
