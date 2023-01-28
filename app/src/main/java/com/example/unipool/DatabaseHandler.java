@@ -362,15 +362,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Boolean insertData(String username, String password, String email, String contact){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues values= new ContentValues();
-//        values.put(PREV_USERNAME, "prev_name");
         values.put(USERNAME, username);
-//        values.put(BIO, "user_bio");
+        values.put(BIO, "This is a bio.");
         //default gender is Male
         values.put(GENDER, "Male");
         values.put(CONTACT_NO, contact);
         values.put(EMAIL, email);
-//        values.put(EMERGENCY_CONT_NAME, "user_emer_cont_name");
-        values.put(EMERGENCY_CONT_NUM, "999");
+        values.put(EMERGENCY_CONT_NAME, "not yet set");
+        values.put(EMERGENCY_CONT_NUM, "not yet set");
         values.put(PASSWORD, password);
         values.put(STATUS, "");
 //        values.put(CAR_MODEL, "car_model");

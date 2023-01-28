@@ -38,7 +38,7 @@ public class MyApplication extends AppCompatActivity {
                 else{
                     Boolean checkuserpass = DB.checkusernamepassword(user, pass);
                     if(checkuserpass==true){
-                        Toast.makeText(MyApplication.this, "Log in successfull", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MyApplication.this, "Log in successful", Toast.LENGTH_SHORT).show();
 
 //                        Bundle bundle = new Bundle();
 //                        bundle.putString("username", user);

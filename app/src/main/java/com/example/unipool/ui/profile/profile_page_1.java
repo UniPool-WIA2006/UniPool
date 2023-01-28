@@ -21,6 +21,7 @@ import com.example.unipool.MainActivity;
 import com.example.unipool.MyApplication;
 import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentProfilePage1Binding;
+import com.example.unipool.ui.login.RegisterActivity;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 /*
 import com.github.drjacky.imagepicker.ImagePicker;
@@ -155,7 +156,7 @@ public class profile_page_1 extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 dbHandler.DeleteAccount(username);
                                 Toast.makeText(getActivity(), "Account has been deleted successfully.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                Intent intent = new Intent(getActivity(), MyApplication.class);
                                 startActivity(intent);
                             }
                         });
@@ -223,5 +224,45 @@ public class profile_page_1 extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        MainActivity activity = (MainActivity) getActivity();
+        username = activity.getUsername();
+
+        Toast.makeText(getActivity(), "Profile Page: " + username, Toast.LENGTH_SHORT).show();
+
+        dbHandler = new DatabaseHandler(getActivity());
+
+        ArrayList<String> arr = dbHandler.searchUserInfo(username);
+
+        TV_username = binding.TVUsername;
+        TV_username.setText(arr.get(0));
+
+        String gender = arr.get(2);
+
+        if(gender.equals("Male") || gender.equals("")) {
+            TV_username.setCompoundDrawablesWithIntrinsicBounds(R.drawable.gender_male, 0, 0, 0);
+        } else {
+            TV_username.setCompoundDrawablesWithIntrinsicBounds(R.drawable.gender_female, 0, 0, 0);
+        }
+
+        TV_bio = binding.TVBio;
+        TV_bio.setText(arr.get(1));
+
+        TV_contact = binding.TVContactNumber;
+        TV_contact.setText(arr.get(3));
+
+        TV_email = binding.TVEmail;
+        TV_email.setText(arr.get(4));
+
+        TV_emer_cont = binding.TVEmerCont;
+        TV_emer_cont.setText(arr.get(6) + " (" + arr.get(5) + " )");
+
+        progressBar = binding.progressbar;
+        TV_trust_point = binding.TVTrustpoint;
+        TV_trust_point.setText("Trust Point: " + arr.get(13));
+        progressBar.setProgress(Integer.valueOf(arr.get(13)));
+    }
 }
 
