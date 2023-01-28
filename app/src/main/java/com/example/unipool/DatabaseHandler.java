@@ -134,6 +134,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    //delete account
+    public void DeleteAccount(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        db.delete(TABLE_NAME1,USERNAME + " ='" + username + "'", null);
+        db.delete(TABLE_NAME2,USERNAME + " ='" + username + "'", null);
+    }
+
     //Update image
     public void AddProfileImage(String username, String image) {
         SQLiteDatabase db = this.getWritableDatabase();
