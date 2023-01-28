@@ -62,12 +62,20 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
             this.buttonClickListener = buttonClickListener;
             deleteBtn.setOnClickListener(this);
+
+            itemView.findViewById(R.id.homeCardView).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
         }
 
         @Override
         public void onClick(View v) {
             buttonClickListener.onButtonClick(getAdapterPosition());
         }
+
     }
 
     public interface buttonClickListener{
