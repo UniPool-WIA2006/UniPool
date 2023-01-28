@@ -315,7 +315,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //display all data by its current manage status. ( Except for the current user's carpooling )
-    public ArrayList<String> searchCarpoolingByType(String username, boolean manage_status) {
+    public ArrayList<String> searchCarpoolingByStatus(String username, boolean manage_status) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + manage_status + "' AND name!='" + username + "'", null);
         ArrayList<String> arr = new ArrayList<>();
