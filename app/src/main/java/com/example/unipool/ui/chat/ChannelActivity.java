@@ -66,7 +66,7 @@ public class ChannelActivity extends AppCompatActivity {
 
         String cid = getIntent().getStringExtra(CID_KEY);
         if (cid == null) {
-            throw new IllegalStateException("Specifying a channel id is required when starting ChannelActivity4");
+            throw new IllegalStateException("Specifying a channel id is required when starting ChannelActivity");
         }
 
         // Step 1 - Create three separate ViewModels for the views so it's easy

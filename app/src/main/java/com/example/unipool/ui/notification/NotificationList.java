@@ -16,6 +16,7 @@ import com.example.unipool.R;
 import com.example.unipool.databinding.ActivityNotificationListBinding;
 import com.example.unipool.databinding.FragmentUserBinding;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -63,41 +64,26 @@ public class NotificationList extends AppCompatActivity {
     private void displaydata()
     {
         Cursor cursor = DB.searchCarpoolingByStatus(value, "true");
-        if(cursor.getCount()==0)
-        {
-            Toast.makeText(NotificationList.this, "No Notification Available", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else
-        {
-            while(cursor.moveToNext())
-            {
-                name.add(cursor.getString(9));
-                type.add(cursor.getString(7));
-                System.out.println(type.size());
-                Date c = Calendar.getInstance().getTime();
-                System.out.println("Current time => " + c); //for debugging
+        try {
+            if (cursor.getCount() == 0) {
+                Toast.makeText(NotificationList.this, "No Notification Available", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                while (cursor.moveToNext()) {
+                    name.add(cursor.getString(9));
+                    type.add(cursor.getString(7));
+                    System.out.println(type.size());
+                    Date c = Calendar.getInstance().getTime();
+                    System.out.println("Current time => " + c); //for debugging
 
-                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm", Locale.getDefault());
-                String formattedDate = df.format(c);
-                date.add(formattedDate);
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm", Locale.getDefault());
+                    String formattedDate = df.format(c);
+                    date.add(formattedDate);
+                }
             }
+        } catch(Exception e) {
+            Toast.makeText(getApplicationContext(), "Error in Retrieving Data", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
     }
 }
-
-//    ArrayList<String> arr = DB.searchCarpoolingByStatus(username, true);
-//        if(arr.size()==0)
-//                {
-//                Toast.makeText(NotificationList.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
-//                return;
-//                } else {
-//                name.add(cursor.getString(9));
-//
-//                Date c = Calendar.getInstance().getTime();
-//                System.out.println("Current time => " + c); //for debugging
-//
-//                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm", Locale.getDefault());
-//                String formattedDate = df.format(c);
-//                date.add(formattedDate);
-//                }
