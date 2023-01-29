@@ -8,11 +8,12 @@
 
 
     <TextView
+        android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Create Offer"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:textSize="25sp"
         android:textStyle="bold"  />
 
@@ -21,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:hint="Pickup Location"
         app:startIconDrawable="@drawable/ic_baseline_emoji_people_24"
         app:endIconDrawable="@drawable/ic_baseline_check_circle_24"
@@ -40,8 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:hint="Destination"
         app:startIconDrawable="@drawable/ic_baseline_add_location_24"
         app:endIconDrawable="@drawable/ic_baseline_check_circle_24"
