@@ -317,6 +317,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
+
     //display all data by its type. ( Except for the current user's carpooling )
     public Cursor searchNonUserCarpoolingByType(String username, String type)
     {

@@ -1,5 +1,6 @@
 package com.example.unipool.ui.manage;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -121,16 +122,29 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
 
     @Override
     public void onClickItem(int position, View view) {
-//        Bundle bundle = new Bundle();
-//        bundle.putString("message", Integer.toString(position));
-//
-//        myOfferDetails myOfferDetails = new myOfferDetails();
-//        myOfferDetails.setArguments(bundle);
+        setRvHomeOfferListID(position);
 
-        Navigation.findNavController(view).navigate(R.id.action_myRequest_to_myRequestDetails);
+//        System.out.println(position);
+//        Navigation.findNavController(view).navigate(R.id.action_myOffer_to_myOfferDetails);
+        Intent intent = new Intent(getActivity(), myRequestDetailsActivity.class);
+        intent.putExtra("POSITION", getRvHomeOfferListID());
+        startActivity(intent);
+
+//        viewModel.setData(getRvHomeOfferListID());
+//        Navigation.findNavController(view).navigate(R.id.action_myRequest_to_myRequestDetails);
     }
 
     public ArrayList<HomeData> getRvHomeRequestList() {
         return rvHomeList;
     }
+
+    private int rvHomeOfferListID;
+    public void setRvHomeOfferListID(int position) {
+        this.rvHomeOfferListID = rvHomeList.get(position).getId();
+    }
+
+    public int getRvHomeOfferListID() {
+        return this.rvHomeOfferListID;
+    }
+
 }

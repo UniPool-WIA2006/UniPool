@@ -15,12 +15,27 @@
         android:theme="@style/Theme.UniPool"
         tools:targetApi="31">
         <activity
+            android:name=".ui.manage.myRequestDetailsActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.manage.myOfferDetailsActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.notification.NotificationList"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".ui.notification.NotificationAdapter"
             android:exported="false">
