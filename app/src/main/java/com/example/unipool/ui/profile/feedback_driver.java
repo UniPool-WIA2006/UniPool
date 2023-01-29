@@ -50,7 +50,7 @@ public class feedback_driver extends AppCompatActivity {
                     }
                 }
                 else if(rating==3.0){
-                    current_trust_point=current_trust_point;
+                    //trust point maintaines
                 }
                 else if(rating==2.0){
                     if((current_trust_point-1<0)==false){

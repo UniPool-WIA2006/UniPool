@@ -309,7 +309,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return arr;
     }
 
-    //display all data by its type. ( Except for the current user's carpooling )
+    //display all data by its type. ( Only for the current user's carpooling )
     public Cursor searchCarpoolingByType(String username, String type)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -317,11 +317,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    // for detailed offer and request
-    public Cursor detailOfferRequest(String username, String type)
+
+    //display all data by its type. ( Except for the current user's carpooling )
+    public Cursor searchNonUserCarpoolingByType(String username, String type)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name='" + username + "'", null);
+        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name!='" + username + "'", null);
         return cursor;
     }
 
