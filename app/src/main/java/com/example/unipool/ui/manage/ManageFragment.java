@@ -38,24 +38,10 @@ public class ManageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView tvCarpoolOffer = binding.tvCarpoolOffer;
-        CardView cvOffer1 = binding.cvCarpoolOffer1;
-        CardView cvOffer2 = binding.cvCarpoolOffer2;
         tvCarpoolOffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_manageCarpoolRequest);
-            }
-        });
-        cvOffer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_carpoolOffer1);
-            }
-        });
-        cvOffer2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_carpoolOffer2);
             }
         });
     }
