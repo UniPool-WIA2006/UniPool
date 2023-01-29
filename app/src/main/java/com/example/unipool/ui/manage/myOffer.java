@@ -1,5 +1,6 @@
 package com.example.unipool.ui.manage;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -99,8 +100,18 @@ public class myOffer extends Fragment implements HomeAdapter.buttonClickListener
                 return;
             } else {
                 while (cursor.moveToNext()) {
-                    rvHomeList.add(new HomeData(cursor.getString(0), cursor.getString(1), cursor.getString(2),
-                            cursor.getString(3), cursor.getString(4), cursor.getInt(10)));
+                    String rvHomeName = cursor.getString(0);
+                    String rvHomeNumber = cursor.getString(1);
+                    String rvHomeLocation = cursor.getString(2);
+                    String rvHomeDestination = cursor.getString(3);
+                    String rvHomeFees = cursor.getString(4);
+                    int id = cursor.getInt(10);
+
+                    HomeData homeDataObj = new HomeData(rvHomeName, rvHomeNumber, rvHomeLocation,
+                            rvHomeDestination, rvHomeFees, id);
+
+                    rvHomeList.add(homeDataObj);
+                    Toast.makeText(getContext(), "arrayList size: " + rvHomeList.size(), Toast.LENGTH_SHORT).show();
                 }
             }
         } catch(Exception e) {
@@ -108,8 +119,6 @@ public class myOffer extends Fragment implements HomeAdapter.buttonClickListener
             e.printStackTrace();
         }
 
-//        rvHomeList.add(new HomeData("d", "dd", "ddd"));
-//        rvHomeList.add(new HomeData("e", "ee", "eee"));
         adapter.notifyDataSetChanged();
     }
 
@@ -131,12 +140,9 @@ public class myOffer extends Fragment implements HomeAdapter.buttonClickListener
     @Override
     public void onClickItem(int position, View view) {
         setRvHomeOfferListID(position);
-
-        System.out.println(position);
-
-        Navigation.findNavController(view).navigate(R.id.action_myOffer_to_myOfferDetails);
-
-        viewModel.setData(getRvHomeOfferListID());
+        Intent intent = new Intent(getActivity(), myOfferDetailsActivity.class);
+        intent.putExtra("POSITION", getRvHomeOfferListID());
+        startActivity(intent);
     }
 
     private int rvHomeOfferListID;

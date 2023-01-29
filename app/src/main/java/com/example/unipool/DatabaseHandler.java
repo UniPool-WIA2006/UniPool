@@ -317,6 +317,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // for detailed offer and request
+    public Cursor detailOfferRequest(String username, String type)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name='" + username + "'", null);
+        return cursor;
+    }
+
     //second method to searchByType
 //    public ArrayList<String> searchCarpoolingByType(String username, String type) {
 //        SQLiteDatabase db = this.getReadableDatabase();
