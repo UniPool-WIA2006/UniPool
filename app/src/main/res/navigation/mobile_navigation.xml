@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
- <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -27,11 +27,8 @@
             android:id="@+id/action_navigation_manage_to_manageCarpoolRequest"
             app:destination="@id/manageCarpoolRequest" />
         <action
-            android:id="@+id/action_navigation_manage_to_carpoolOffer2"
-            app:destination="@id/carpoolOffer2" />
-        <action
-            android:id="@+id/action_navigation_manage_to_carpoolOffer1"
-            app:destination="@id/carpoolOffer1" />
+            android:id="@+id/action_navigation_manage_to_manageDetails"
+            app:destination="@id/manageDetails" />
     </fragment>
 
     <fragment
@@ -43,6 +40,7 @@
             android:id="@+id/action_navigation_chat_to_userFragment"
             app:destination="@id/userFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.unipool.ui.profile.profile_page_1"
@@ -145,27 +143,12 @@
             android:id="@+id/action_manageCarpoolRequest_to_navigation_manage"
             app:destination="@id/navigation_manage" />
         <action
-            android:id="@+id/action_manageCarpoolRequest_to_carpoolRequest1"
-            app:destination="@id/carpoolRequest1" />
-        <action
-            android:id="@+id/action_manageCarpoolRequest_to_carpoolRequest2"
-            app:destination="@id/carpoolRequest2" />
+            android:id="@+id/action_manageCarpoolRequest_to_manageDetails"
+            app:destination="@id/manageDetails" />
+
     </fragment>
     <fragment
-        android:id="@+id/carpoolOffer1"
-        android:name="com.example.unipool.ui.manage.carpoolOffer1"
-        android:label="Carpool Offer"
-        tools:layout="@layout/fragment_carpool_offer2" />
-    <fragment
-        android:id="@+id/carpoolOffer2"
-        android:name="com.example.unipool.ui.manage.carpoolOffer2"
-        android:label="Carpool Offer" />
-    <fragment
-        android:id="@+id/carpoolRequest1"
-        android:name="com.example.unipool.ui.manage.carpoolRequest1"
-        android:label="Carpool Request" />
-    <fragment
-        android:id="@+id/carpoolRequest2"
-        android:name="com.example.unipool.ui.profile.carpoolRequest2"
-        android:label="Carpool Request" />
+        android:id="@+id/manageDetails"
+        android:name="com.example.unipool.ui.manage.manageDetails"
+        android:label="Manage Details" />
 </navigation>
