@@ -1,5 +1,6 @@
 package com.example.unipool.ui.manage;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.unipool.DatabaseHandler;
+import com.example.unipool.MainActivity;
 import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentMyRequestBinding;
 import com.example.unipool.ui.home.HomeViewModel;
@@ -36,14 +40,33 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
 
     private FragmentMyRequestBinding binding;
 
+    private String username;
+    DatabaseHandler DB;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        DB = new DatabaseHandler(getActivity());
+
+        MainActivity activity = (MainActivity) getActivity();
+        username = activity.getUsername();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentMyRequestBinding.inflate(getLayoutInflater());
+
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        createRequestBtn = binding.homeCreateBtn;
+        createRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_createRequest);
+            }
+        });
 
         recyclerView = binding.homeRV;
         recyclerView.setHasFixedSize(true);
@@ -54,17 +77,26 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
         recyclerView.setAdapter(adapter);
 
 //      insert data from database into arraylist
-        rvHomeList.add(new HomeData("a", "aa", "aaa"));
-        rvHomeList.add(new HomeData("b", "bb", "bbb"));
+        Cursor cursor = DB.searchCarpoolingByType(username, "offer");
+        try {
+            if (cursor.getCount() == 0) {
+                Toast.makeText(getActivity(), "No Your Carpool Request Available", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                while (cursor.moveToNext()) {
+                    rvHomeList.add(new HomeData(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4), cursor.getInt(10)));
+                }
+            }
+        } catch(Exception e) {
+            Toast.makeText(getActivity(), "Error in Retrieving Data", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+//        rvHomeList.add(new HomeData("a", "aa", "aaa"));
+//        rvHomeList.add(new HomeData("b", "bb", "bbb"));
         adapter.notifyDataSetChanged();
 
-        createRequestBtn = binding.homeCreateBtn;
-        createRequestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_myRequest_to_createRequest);
-            }
-        });
 
         super.onViewCreated(view, savedInstanceState);
 
@@ -80,12 +112,25 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
     @Override
     public void onButtonClick(int position) {
 //      kena remove data dari database, mockup data ni akan ada balik kalau refresh
+        DB.DeleteCarpool(rvHomeList.get(position).getId());
+        Toast.makeText(getActivity(), "Delete Successful", Toast.LENGTH_SHORT).show();
         rvHomeList.remove(position);
+        adapter.notifyItemRemoved(position);
         adapter.notifyItemRemoved(position);
     }
 
     @Override
     public void onClickItem(int position, View view) {
+//        Bundle bundle = new Bundle();
+//        bundle.putString("message", Integer.toString(position));
+//
+//        myOfferDetails myOfferDetails = new myOfferDetails();
+//        myOfferDetails.setArguments(bundle);
+
         Navigation.findNavController(view).navigate(R.id.action_myRequest_to_myRequestDetails);
+    }
+
+    public ArrayList<HomeData> getRvHomeRequestList() {
+        return rvHomeList;
     }
 }

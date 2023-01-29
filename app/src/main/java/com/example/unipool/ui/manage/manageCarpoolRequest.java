@@ -4,9 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.unipool.R;
-import com.example.unipool.databinding.FragmentManageBinding;
 import com.example.unipool.databinding.FragmentManageCarpoolRequestBinding;
-import com.example.unipool.ui.manage.ManageViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class manageCarpoolRequest extends Fragment implements ManageInterface{
     RecyclerView recyclerView;

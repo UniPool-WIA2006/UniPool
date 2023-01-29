@@ -37,10 +37,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         HomeData homeData =rvList.get(position);
+        holder.vhName.setText(homeData.getRvHomeName());
+        holder.vhNumber.setText(homeData.getRvHomeNumber());
         holder.vhLocation.setText(homeData.getRvHomeLocation());
         holder.vhDestination.setText(homeData.getRvHomeDestination());
         holder.vhFees.setText(homeData.getRvHomeFees());
-
     }
 
     @Override
@@ -49,7 +50,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
+        private TextView vhName;
+        private TextView vhNumber;
         private TextView vhLocation;
         private TextView vhDestination;
         private TextView vhFees;
@@ -59,6 +61,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView, buttonClickListener buttonClickListener, HomeInterface homeInterface) {
             super(itemView);
 
+            vhName = itemView.findViewById(R.id.homeName);
+            vhNumber = itemView.findViewById(R.id.homeNumber);
             vhLocation = itemView.findViewById(R.id.homeLocation);
             vhDestination = itemView.findViewById(R.id.homeDestination);
             vhFees = itemView.findViewById(R.id.homeFees);

@@ -13,23 +13,49 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.unipool.DatabaseHandler;
+import com.example.unipool.MainActivity;
 import com.example.unipool.R;
 import com.example.unipool.databinding.FragmentHomeBinding;
 import com.example.unipool.databinding.FragmentMyOfferDetailsBinding;
 import com.example.unipool.ui.home.HomeViewModel;
 
+import java.util.ArrayList;
+
 
 public class myOfferDetails extends Fragment {
     private FragmentMyOfferDetailsBinding binding;
+    private TextView offerDetailsName, offerDetailsNumber, offerDetailsLocation, offerDetailsDestination, offerDetailsFees
+            , offerDetailsTrustPoint, offerDetailsExtraNotes;
+    private Integer id;
+    DatabaseHandler DB;
+    SharedViewModel viewModel;
+
+    public myOfferDetails() {
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DB = new DatabaseHandler(getActivity());
+
+        viewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        viewModel.getData().observe(this, data -> {
+            id = data;
+        });
+
+        MainActivity activity = (MainActivity) getActivity();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentMyOfferDetailsBinding.inflate(getLayoutInflater());
+
+        viewModel.getData().observe(getViewLifecycleOwner(), data -> {
+            id = data;
+        });
+
         return binding.getRoot();
     }
 

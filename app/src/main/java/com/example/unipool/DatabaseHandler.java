@@ -97,7 +97,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + TRUST_POINT + " INT,"
                 + TYPE + " TEXT,"
                 + MANAGE_STATUS + " TEXT,"
-                + UserAccept + "TEXT,"
+                + UserAccept + " TEXT,"
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT)";
         //Type = request/offer
 
@@ -166,6 +166,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_NAME1,USERNAME + " = ?", new String[]{username});
         db.delete(TABLE_NAME2,USERNAME + " = ?", new String[]{username});
         db.delete(TABLE_NAME3,USERNAME + " = ?", new String[]{username});
+    }
+
+    //delete carpool
+    public void DeleteCarpool(Integer id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        db.delete(TABLE_NAME3,ID + " = " + id, null);
     }
 
     //Update image
@@ -281,7 +288,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //display all data of same username and can filter further by the type wanted.
     public ArrayList<String> displayMyCarpool(String username, String type) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE name='" + username + "' AND type='" + type, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE name= '" + username + "' AND type= '" + type + "'", null);
         ArrayList<String> arr = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
@@ -303,35 +310,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //display all data by its type. ( Except for the current user's carpooling )
-    public ArrayList<String> searchCarpoolingByType(String username, String type) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name!='" + username + "'", null);
-        ArrayList<String> arr = new ArrayList<>();
-        if (cursor.moveToFirst()) {
-            do {
-                arr.add(cursor.getString(0)); //username
-                arr.add(cursor.getString(1)); //phone no
-                arr.add(cursor.getString(2)); //location from
-                arr.add(cursor.getString(3)); //location to
-                arr.add(cursor.getString(4)); //fee
-                arr.add(cursor.getString(5)); //description
-                arr.add(cursor.getString(6)); //trust point
-                arr.add(cursor.getString(7)); //type
-                arr.add(cursor.getString(8)); //manage status
-                arr.add(cursor.getString(9)); //user accept
-                arr.add(Integer.toString(cursor.getInt(10))); //id
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return arr;
+    public Cursor searchCarpoolingByType(String username, String type)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name='" + username + "'", null);
+        return cursor;
     }
 
     //second method to searchByType
-//    public Cursor searchCarpoolingByType(String username, String type)
-//    {
-//        SQLiteDatabase DB = this.getWritableDatabase();
-//        Cursor cursor  = DB.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE manage_status='" + type + "' AND name='" + username + "'", null);
-//        return cursor;
+//    public ArrayList<String> searchCarpoolingByType(String username, String type) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE type='" + type + "' AND name!='" + username + "'", null);
+//        ArrayList<String> arr = new ArrayList<>();
+//        if (cursor.moveToFirst()) {
+//            do {
+//                arr.add(cursor.getString(0)); //username
+//                arr.add(cursor.getString(1)); //phone no
+//                arr.add(cursor.getString(2)); //location from
+//                arr.add(cursor.getString(3)); //location to
+//                arr.add(cursor.getString(4)); //fee
+//                arr.add(cursor.getString(5)); //description
+//                arr.add(cursor.getString(6)); //trust point
+//                arr.add(cursor.getString(7)); //type
+//                arr.add(cursor.getString(8)); //manage status
+//                arr.add(cursor.getString(9)); //user accept
+//                arr.add(Integer.toString(cursor.getInt(10))); //id
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        return arr;
 //    }
 
     // Update Notification and add who accepted the offer/request
@@ -342,6 +349,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(MANAGE_STATUS, true);
         values.put(UserAccept, userAccept);
         db.update(TABLE_NAME3, values, USERNAME + " = ?", new String[]{username});
+    }
+
+    public void UpdateCarpool(String location, String destination, String note, String fee, Integer id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(LOCATION_FROM, location);
+        values.put(LOCATION_TO, destination);
+        values.put(DESC, note);
+        values.put(FEE, fee);
+        db.update(TABLE_NAME3, values, ID + " = " + id, null);
     }
 
     //display all data by its current manage status. ( Only if related to the current user's carpooling offer/request)
@@ -399,10 +416,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         contentValues.put(PROFILE_IMAGE, "file:///storage/emulated/0/Android/data/com.example.unipool/files/DCIM/IMG_20230109_203633960.jpg");
         MyDB.insert(TABLE_NAME2, null, contentValues);
 
-        ContentValues table3 = new ContentValues();
-        table3.put(USERNAME, username);
-        table3.put(TRUST_POINT, 100);
-        MyDB.insert(TABLE_NAME3, null, table3);
+//        ContentValues table3 = new ContentValues();
+//        table3.put(USERNAME, username);
+//        table3.put(TRUST_POINT, 100);
+//        MyDB.insert(TABLE_NAME3, null, table3);
 
         ContentValues values= new ContentValues();
         values.put(USERNAME, username);

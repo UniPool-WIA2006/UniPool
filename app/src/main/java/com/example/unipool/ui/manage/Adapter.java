@@ -21,6 +21,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private final ManageInterface manageInterface;
     Context context;
     ArrayList<ModelClass> rvList;
+    SharedViewModel viewModel;
 
     public Adapter(Context context, ArrayList<ModelClass> rvList, ManageInterface manageInterface) {
         this.context = context;
@@ -32,6 +33,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.manage_recyclerview, parent, false);
+
         return new ViewHolder(view, manageInterface);
     }
 
@@ -52,6 +54,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public int getItemCount() {
         return rvList.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -79,10 +82,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     if (manageDetails != null) {
+
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION){
                             manageDetails.onClickItem(position, itemView);
                         }
+
                     }
                 }
             });
