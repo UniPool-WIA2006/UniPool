@@ -19,6 +19,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     Context context;
     ArrayList<HomeData> rvList;
     buttonClickListener buttonClickListener;
+    SharedViewModel viewModel;
 
     public HomeAdapter(Context context, ArrayList<HomeData> rvList, buttonClickListener buttonClickListener, HomeInterface homeInterface) {
         this.context = context;
@@ -49,7 +50,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         return rvList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView vhName;
         private TextView vhNumber;
         private TextView vhLocation;
@@ -93,6 +94,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         @Override
         public void onClick(View v) {
             buttonClickListener.onButtonClick(getAdapterPosition());
+            viewModel.setData(getAdapterPosition());
         }
 
     }

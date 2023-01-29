@@ -77,7 +77,7 @@ public class myRequest extends Fragment implements HomeAdapter.buttonClickListen
         recyclerView.setAdapter(adapter);
 
 //      insert data from database into arraylist
-        Cursor cursor = DB.searchCarpoolingByType(username, "offer");
+        Cursor cursor = DB.searchCarpoolingByType(username, "request");
         try {
             if (cursor.getCount() == 0) {
                 Toast.makeText(getActivity(), "No Your Carpool Request Available", Toast.LENGTH_SHORT).show();

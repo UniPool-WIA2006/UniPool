@@ -46,6 +46,8 @@ public class myOfferDetails extends Fragment {
             id = data;
         });
 
+        System.out.println(id);
+
         MainActivity activity = (MainActivity) getActivity();
     }
 
@@ -55,6 +57,8 @@ public class myOfferDetails extends Fragment {
         viewModel.getData().observe(getViewLifecycleOwner(), data -> {
             id = data;
         });
+
+        System.out.println(id);
 
         return binding.getRoot();
     }

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:gravity="center"
-            android:text="Carpool Offer"
+            android:text="Carpool Request"
             android:textColor="#2CD8DD"
             android:textSize="20sp" />
 

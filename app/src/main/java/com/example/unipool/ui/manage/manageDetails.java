@@ -12,12 +12,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.unipool.DatabaseHandler;
 import com.example.unipool.databinding.FragmentManageCarpoolRequestBinding;
 import com.example.unipool.databinding.FragmentManageDetailsBinding;
 
 public class manageDetails extends Fragment {
 
     private FragmentManageDetailsBinding binding;
+    private DatabaseHandler DB;
+
+    private String username;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
