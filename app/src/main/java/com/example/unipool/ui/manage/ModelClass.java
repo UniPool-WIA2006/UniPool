@@ -9,8 +9,9 @@ public class ModelClass {
     private String rvDestination;
     private int rvRating;
     private String rvExtraNotes;
+    private int id;
 
-    public ModelClass(int rvPicture, int rvGenderIcon, String rvName, String rvNumber, String rvFees, String rvLocation, String rvDestination) {
+    public ModelClass(int rvPicture, int rvGenderIcon, String rvName, String rvNumber, String rvFees, String rvLocation, String rvDestination, int id) {
         this.rvPicture = rvPicture;
         this.rvGenderIcon = rvGenderIcon;
         this.rvName = rvName;
@@ -18,6 +19,15 @@ public class ModelClass {
         this.rvFees = rvFees;
         this.rvLocation = rvLocation;
         this.rvDestination = rvDestination;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRvPicture() {

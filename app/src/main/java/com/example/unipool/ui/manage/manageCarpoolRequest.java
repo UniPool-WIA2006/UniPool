@@ -69,9 +69,17 @@ public class manageCarpoolRequest extends Fragment implements ManageInterface{
                 return;
             } else {
                 while (cursor.moveToNext()) {
-                    rvList.add(new ModelClass(R.drawable.profileicon, R.drawable.ic_baseline_male_24,
-                            cursor.getString(0), cursor.getString(1), cursor.getString(4),
-                            cursor.getString(2), cursor.getString(3)));
+                    int rvPicture = R.drawable.profileicon;
+                    int rvGenderIcon = R.drawable.ic_baseline_male_24;
+                    String rvName = cursor.getString(0);
+                    String rvNumber = cursor.getString(1);
+                    String rvFees = cursor.getString(4);
+                    String rvLocation = cursor.getString(2);
+                    String rvDestination = cursor.getString(3);
+                    int id = cursor.getInt(10);
+
+                    ModelClass modelClassObj = new ModelClass(rvPicture, rvGenderIcon, rvName, rvNumber, rvFees, rvLocation, rvDestination, id);
+                    rvList.add(modelClassObj);
                 }
             }
         } catch(Exception e) {

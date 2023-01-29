@@ -1,4 +1,5 @@
 package com.example.unipool.ui.manage;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -76,9 +77,17 @@ public class ManageFragment extends Fragment implements ManageInterface {
                 return;
             } else {
                 while (cursor.moveToNext()) {
-                    rvList.add(new ModelClass(R.drawable.profileicon, R.drawable.ic_baseline_male_24,
-                            cursor.getString(0), cursor.getString(1), cursor.getString(4),
-                            cursor.getString(2), cursor.getString(3)));
+                    int rvPicture = R.drawable.profileicon;
+                    int rvGenderIcon = R.drawable.ic_baseline_male_24;
+                    String rvName = cursor.getString(0);
+                    String rvNumber = cursor.getString(1);
+                    String rvFees = cursor.getString(4);
+                    String rvLocation = cursor.getString(2);
+                    String rvDestination = cursor.getString(3);
+                    int id = cursor.getInt(10);
+
+                    ModelClass modelClassObj = new ModelClass(rvPicture, rvGenderIcon, rvName, rvNumber, rvFees, rvLocation, rvDestination, id);
+                    rvList.add(modelClassObj);
                 }
             }
         } catch(Exception e) {
@@ -110,6 +119,22 @@ public class ManageFragment extends Fragment implements ManageInterface {
 
     @Override
     public void onClickItem(int position, View view) {
-        Navigation.findNavController(view).navigate(R.id.action_navigation_manage_to_manageDetails);
+        setRvHomeOfferListID(position);
+        Intent intent = new Intent(getActivity(), manageDetailsActivity.class);
+        intent.putExtra("POSITION", getRvListID());
+        startActivity(intent);
+    }
+
+    public ArrayList<ModelClass> getRvHomeRequestList() {
+        return rvList;
+    }
+
+    private int rvListID;
+    public void setRvHomeOfferListID(int position) {
+        this.rvListID = rvList.get(position).getId();
+    }
+
+    public int getRvListID() {
+        return this.rvListID;
     }
 }
