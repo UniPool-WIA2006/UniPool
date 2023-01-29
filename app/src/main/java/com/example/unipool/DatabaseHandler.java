@@ -285,6 +285,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    //display data of a specify carpool request/offer
+    public ArrayList<String> searchCarpool(Integer id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE ID= " + id, null);
+        ArrayList<String> arr = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                arr.add(cursor.getString(0)); //username
+                arr.add(cursor.getString(1)); //phone no
+                arr.add(cursor.getString(2)); //location from
+                arr.add(cursor.getString(3)); //location to
+                arr.add(cursor.getString(4)); //fee
+                arr.add(cursor.getString(5)); //description
+                arr.add(cursor.getString(6)); //trust point
+                arr.add(cursor.getString(7)); //type
+                arr.add(cursor.getString(8)); //manage status
+                arr.add(cursor.getString(9)); //user accept
+                arr.add(Integer.toString(cursor.getInt(10))); //id
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return arr;
+    }
+
     //display all data of same username and can filter further by the type wanted.
     public ArrayList<String> displayMyCarpool(String username, String type) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -352,12 +376,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // Update Notification and add who accepted the offer/request
     // Boolean True = accepted offer/request
-    public void UpdateManageStatus(String username, String userAccept){
+    public void UpdateManageStatus(Integer id, String userAccept){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(MANAGE_STATUS, true);
         values.put(UserAccept, userAccept);
-        db.update(TABLE_NAME3, values, USERNAME + " = ?", new String[]{username});
+        db.update(TABLE_NAME3, values, ID + " = " + id, null);
     }
 
     public void UpdateCarpool(String location, String destination, String note, String fee, Integer id){
